@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>忍者Challenge・KIDS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #1A1A1A;
+      --red:    #E2231A;
+      --red-dk: #B51A12;
+      --gold:   #E8A020;
+      --cream:  #F7F4F0;
+      --gray-1: #F2F0EC;
+      --gray-2: #E0DDD8;
+      --gray-3: #9A9690;
+      --text:   #1A1A1A;
+      --text-2: #333333;
+      --white:  #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; }
+
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* ── Utilities ── */
+    .eyebrow {
+      display: inline-block;
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 14px;
+    }
+
+    .section-heading {
+      font-size: clamp(24px, 3.2vw, 36px);
+      font-weight: 300;
+      color: var(--navy);
+      line-height: 1.3;
+      margin-bottom: 48px;
+    }
+
+    .img-ph {
+      background: var(--gray-2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--gray-3);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+    }
+    .img-ph svg { opacity: 0.5; }
+
+    /* ── Navigation ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      background: rgba(26, 26, 26, 0.97);
+      backdrop-filter: blur(8px);
+      height: 64px;
+      display: flex;
+      align-items: center;
+    }
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .nav-logo {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.02em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-logo-mark {
+      width: 28px; height: 28px;
+      background: var(--red);
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+    }
+    .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta {
+      background: var(--red);
+      color: #fff !important;
+      padding: 8px 18px;
+      border-radius: 0;
+      font-weight: 700 !important;
+    }
+    .nav-cta:hover { background: var(--red-dk); }
+
+    /* ── Section 1: Hero ── */
+    #hero {
+      padding-top: 64px;
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-video-wrap {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #000;
+      z-index: 0;
+    }
+    .hero-video-wrap iframe {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: max(100%, 177.78vh);
+      height: max(56.25vw, 100%);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      border: none;
+    }
+    .hero-video-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+      max-width: 600px;
+    }
+    .hero-eyebrow {
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hero-eyebrow::before {
+      content: "";
+      display: inline-block;
+      width: 32px; height: 2px;
+      background: var(--gold);
+    }
+    .hero-headline {
+      font-size: clamp(40px, 5.5vw, 72px);
+      font-weight: 300;
+      line-height: 1.18;
+      margin-bottom: 22px;
+      letter-spacing: -0.01em;
+    }
+    .hero-headline em {
+      font-style: normal;
+      color: var(--gold);
+    }
+    .hero-sub {
+      font-size: clamp(14px, 1.6vw, 17px);
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 44px;
+      line-height: 1.8;
+    }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+    .btn-hero-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--red);
+      color: #fff;
+      padding: 15px 32px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 0;
+      transition: background 0.2s, transform 0.15s;
+      letter-spacing: 0.03em;
+      border: none; cursor: pointer;
+    }
+    .btn-hero-primary:hover { background: var(--red-dk); transform: translateY(-1px); }
+    .btn-hero-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: rgba(255,255,255,0.8);
+      padding: 15px 24px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 0;
+      transition: border-color 0.2s, color 0.2s;
+      letter-spacing: 0.02em;
+    }
+    .btn-hero-ghost:hover { border-color: rgba(255,255,255,0.6); color: #fff; }
+    .hero-stat-row {
+      margin-top: 60px;
+      display: flex;
+      gap: 32px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+    .hero-stat strong {
+      display: block;
+      font-family: "Inter", sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .hero-stat span {
+      font-size: 11px;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Section 2: Problem ── */
+    #problem {
+      padding: 168px 0;
+      background: var(--cream);
+    }
+    .problem-intro {
+      max-width: 540px;
+      margin-bottom: 64px;
+    }
+    .problem-intro p {
+      font-size: 15px;
+      color: var(--text-2);
+      line-height: 1.9;
+    }
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--gray-2);
+      border: 2px solid var(--gray-2);
+    }
+    .problem-card {
+      background: var(--white);
+      padding: 40px 36px;
+      position: relative;
+    }
+    .problem-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--red);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .problem-card:hover::before { transform: scaleX(1); }
+    .problem-num {
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--red);
+      letter-spacing: 0.2em;
+      margin-bottom: 20px;
+    }
+    .problem-icon-wrap {
+      width: 52px; height: 52px;
+      background: #FDF0EE;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 22px;
+    }
+    .problem-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+    .problem-card p {
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.9;
+    }
+
+    /* ── Section 3: What We Do ── */
+    #what-we-do {
+      padding: 168px 0;
+      background: var(--white);
+    }
+    .whatwedo-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 88px;
+      align-items: center;
+    }
+    .whatwedo-img-wrap {
+      position: relative;
+    }
+    .whatwedo-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      max-height: 540px;
+    }
+    .whatwedo-img-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 120px; height: 120px;
+      background: var(--red);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(200,53,42,0.35);
+    }
+    .whatwedo-img-badge strong {
+      font-family: "Inter", sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .whatwedo-img-badge span {
+      font-size: 10px;
+      opacity: 0.85;
+      margin-top: 4px;
+      letter-spacing: 0.05em;
+    }
+    .steps { display: flex; flex-direction: column; gap: 0; }
+    .step {
+      display: flex;
+      gap: 22px;
+      align-items: flex-start;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--gray-1);
+      position: relative;
+    }
+    .step:first-child { padding-top: 0; }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      flex-shrink: 0;
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--red);
+      letter-spacing: 0.1em;
+      padding-top: 3px;
+      width: 36px;
+    }
+    .step-body h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .step-body p {
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.9;
+    }
+
+    /* ── Section 4: Impact ── */
+    #impact {
+      padding: 168px 0;
+      background: var(--navy);
+    }
+    #impact .eyebrow { color: var(--gold); }
+    #impact .section-heading { color: #fff; margin-bottom: 64px; }
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .impact-item {
+      background: rgba(255,255,255,0.04);
+      padding: 40px 24px;
+      text-align: center;
+      transition: background 0.2s;
+    }
+    .impact-item:hover { background: rgba(255,255,255,0.08); }
+    .impact-number {
+      font-family: "Inter", sans-serif;
+      font-size: clamp(30px, 3.2vw, 46px);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    .impact-number span {
+      color: var(--gold);
+    }
+    .impact-label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── Section 5: Vision ── */
+    #vision {
+      padding: 192px 0;
+      background: #0F1825;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    #vision::before {
+      content: "";
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(200,53,42,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .vision-inner { position: relative; z-index: 1; }
+    .vision-mark {
+      font-family: "Inter", sans-serif;
+      font-size: 80px;
+      font-weight: 800;
+      color: var(--red);
+      opacity: 0.35;
+      line-height: 0.7;
+      display: block;
+      margin-bottom: 16px;
+    }
+    .vision-quote {
+      font-size: clamp(22px, 3.5vw, 42px);
+      font-weight: 300;
+      color: #fff;
+      line-height: 1.5;
+      max-width: 840px;
+      margin: 0 auto 36px;
+      letter-spacing: -0.01em;
+    }
+    .vision-sub-line {
+      width: 48px; height: 2px;
+      background: var(--red);
+      margin: 0 auto 32px;
+    }
+    .vision-desc {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      max-width: 580px;
+      margin: 0 auto;
+      line-height: 1.95;
+    }
+
+    /* ── Section 6: Team ── */
+    #team {
+      padding: 168px 0;
+      background: var(--cream);
+    }
+    .team-inner {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+    .team-photo-wrap { position: relative; }
+    .team-photo {
+      width: 100%;
+      aspect-ratio: 1;
+    }
+    .team-photo-accent {
+      position: absolute;
+      bottom: -12px; right: -12px;
+      width: 100%; height: 100%;
+      border: 2px solid var(--red);
+      z-index: -1;
+    }
+    .team-badge {
+      position: absolute;
+      top: 16px; left: -16px;
+      background: var(--navy);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 6px 12px;
+      letter-spacing: 0.1em;
+    }
+    .team-right { padding-top: 8px; }
+    .team-name {
+      font-size: clamp(22px, 2.5vw, 28px);
+      font-weight: 900;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .team-title {
+      font-size: 13px;
+      color: var(--red);
+      font-weight: 500;
+      margin-bottom: 28px;
+      letter-spacing: 0.03em;
+    }
+    .team-bio {
+      font-size: 14px;
+      color: var(--text-2);
+      line-height: 1.95;
+      margin-bottom: 28px;
+    }
+    .team-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--navy);
+      background: rgba(27,40,72,0.08);
+      padding: 5px 12px;
+      border-radius: 99px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Section 7: CTA ── */
+    #cta { background: var(--white); }
+
+    .cta-upper {
+      padding: 168px 0;
+      border-bottom: 1px solid var(--gray-2);
+    }
+    .cta-upper .container,
+    .cta-lower .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 88px;
+      align-items: start;
+    }
+    .cta-lower { padding: 144px 0; background: var(--cream); }
+
+    .cta-text .section-heading { margin-bottom: 16px; }
+    .cta-text p {
+      font-size: 14px;
+      color: var(--text-2);
+      line-height: 1.9;
+      margin-bottom: 24px;
+    }
+    .cta-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text-2);
+      margin-bottom: 10px;
+    }
+    .cta-feature::before {
+      content: "";
+      flex-shrink: 0;
+      width: 18px; height: 18px;
+      background: #FDF0EE;
+      border-radius: 50%;
+      background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 9l3.5 3.5L14 6' stroke='%23E2231A' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-size: contain;
+      margin-top: 2px;
+    }
+
+    .form-card {
+      background: var(--white);
+      border: 1px solid var(--gray-2);
+      padding: 36px;
+      border-radius: 0;
+    }
+    .form-card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--gray-1);
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-2);
+      margin-bottom: 6px;
+      letter-spacing: 0.04em;
+    }
+    .form-group label .req { color: var(--red); margin-left: 2px; }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid var(--gray-2);
+      background: var(--gray-1);
+      font-size: 13px;
+      font-family: inherit;
+      color: var(--text);
+      outline: none;
+      border-radius: 0;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--navy);
+      background: var(--white);
+    }
+    .form-group textarea { height: 104px; resize: vertical; }
+    .btn-submit {
+      width: 100%;
+      padding: 14px;
+      background: var(--red);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      font-family: inherit;
+      border: none;
+      border-radius: 0;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      transition: background 0.2s;
+      margin-top: 4px;
+    }
+    .btn-submit:hover { background: var(--red-dk); }
+
+    .cta-lower-right {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      justify-content: center;
+    }
+    .cta-lower-right p { font-size: 14px; color: var(--text-2); line-height: 1.9; }
+    .insta-card {
+      background: var(--white);
+      border: 1px solid var(--gray-2);
+      padding: 28px 32px;
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      text-decoration: none;
+      transition: box-shadow 0.2s, transform 0.15s;
+    }
+    .insta-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.09); transform: translateY(-2px); }
+    .insta-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .insta-text strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 2px;
+    }
+    .insta-text span {
+      font-size: 12px;
+      color: var(--gray-3);
+    }
+    .insta-arrow { margin-left: auto; color: var(--gray-3); }
+
+    /* ── Footer ── */
+    footer {
+      background: #0D1422;
+      color: rgba(255,255,255,0.45);
+      padding: 44px 0;
+    }
+    footer .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-logo {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .footer-logo-mark {
+      width: 24px; height: 24px;
+      background: var(--red);
+      border-radius: 3px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px;
+    }
+    .footer-copy { font-size: 12px; }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .impact-grid { grid-template-columns: repeat(3, 1fr); }
+      .impact-grid .impact-item:nth-child(4),
+      .impact-grid .impact-item:nth-child(5) { grid-column: span 1; }
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+      .nav-links { display: none; }
+
+      #hero { min-height: auto; padding: 150px 0 96px; }
+      .hero-content { max-width: 100%; }
+      .hero-stat-row { gap: 20px; }
+
+      #problem { padding: 108px 0; }
+      .problem-grid { grid-template-columns: 1fr; gap: 0; background: none; border: none; }
+      .problem-card { border-bottom: 1px solid var(--gray-2); padding: 32px 0; }
+
+      #what-we-do { padding: 108px 0; }
+      .whatwedo-inner { grid-template-columns: 1fr; gap: 48px; }
+      .whatwedo-img { max-height: 280px; }
+      .whatwedo-img-badge { width: 90px; height: 90px; bottom: -12px; right: -8px; }
+
+      #impact { padding: 108px 0; }
+      .impact-grid { grid-template-columns: repeat(2, 1fr); }
+      .impact-grid .impact-item:last-child { grid-column: 1 / -1; }
+
+      #vision { padding: 120px 0; }
+
+      #team { padding: 108px 0; }
+      .team-inner { grid-template-columns: 1fr; gap: 36px; }
+      .team-photo-wrap { max-width: 200px; }
+
+      .cta-upper .container,
+      .cta-lower .container { grid-template-columns: 1fr; gap: 48px; }
+      .cta-upper { padding: 108px 0; }
+      .cta-lower { padding: 108px 0; }
+      .form-row { grid-template-columns: 1fr; }
+
+      footer .container { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <div class="nav-logo">
+        <div class="nav-logo-mark">忍</div>
+        忍者Challenge・KIDS
+      </div>
+      <ul class="nav-links">
+        <li><a href="#problem">課題</a></li>
+        <li><a href="#what-we-do">活動内容</a></li>
+        <li><a href="#impact">実績</a></li>
+        <li><a href="#team">運営者</a></li>
+        <li><a href="#cta" class="nav-cta">お問い合わせ</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ========================================
+       Section 1: Hero
+  ======================================== -->
+  <section id="hero">
+    <div class="hero-video-wrap">
+      <iframe
+        src="https://www.youtube.com/embed/OBGMbBSK6ew?autoplay=1&mute=1&loop=1&controls=0&playsinline=1&playlist=OBGMbBSK6ew&rel=0&showinfo=0&disablekb=1"
+        allow="autoplay; fullscreen"
+        allowfullscreen
+        title="忍者Challenge・KIDS 活動動画"
+      ></iframe>
+      <div class="hero-video-overlay"></div>
+    </div>
+    <div class="container" style="position:relative; z-index:2;">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Ninja Challenge・KIDS — 東京・浅草</p>
+        <h1 class="hero-headline">子どもたちが、<br><em>世界と話す。</em></h1>
+        <p class="hero-sub">
+          忍者の衣装をまとい、外国人観光客に英語でインタビュー。<br>
+          浅草発、完全無料の英語体験プログラム。
+        </p>
+        <div class="hero-actions">
+          <a href="#problem" class="btn-hero-primary">
+            活動について知る
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+          </a>
+          <a href="#cta" class="btn-hero-ghost">連携・協賛について</a>
+        </div>
+        <div class="hero-stat-row">
+          <div class="hero-stat">
+            <strong>120<span style="font-size:18px">組</span></strong>
+            <span>累計参加家族</span>
+          </div>
+          <div class="hero-stat">
+            <strong>98<span style="font-size:18px">%</span></strong>
+            <span>参加後満足率</span>
+          </div>
+          <div class="hero-stat">
+            <strong>無料</strong>
+            <span>参加費</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       Section 2: Problem（課題提起）
+  ======================================== -->
+  <section id="problem">
+    <div class="container">
+      <div class="problem-intro">
+        <p class="eyebrow">Problem</p>
+        <h2 class="section-heading">なぜ、今この<br>活動が必要か</h2>
+        <p>日本の子どもたちは英語を学んでいます。しかし「使える英語」を体験できる場は、まだほとんど存在しません。</p>
+      </div>
+      <div class="problem-grid">
+
+        <div class="problem-card">
+          <p class="problem-num">01</p>
+          <div class="problem-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E2231A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+          </div>
+          <h3>英語への<br>心理的ハードル</h3>
+          <p>学習機会は増えても、実際に話す自信を持てない子どもが多く、「話せない」という苦手意識が早期に定着してしまいます。</p>
+        </div>
+
+        <div class="problem-card">
+          <p class="problem-num">02</p>
+          <div class="problem-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E2231A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+          </div>
+          <h3>「使える英語」を<br>体験できる場の少なさ</h3>
+          <p>英語教育が充実しても、本物のコミュニケーションとして英語を「使い切る」場所はほとんど存在しません。</p>
+        </div>
+
+        <div class="problem-card">
+          <p class="problem-num">03</p>
+          <div class="problem-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E2231A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <h3>外国人との交流機会<br>の偏在</h3>
+          <p>訪日外国人が過去最高水準に達する一方、子どもが彼らと自然に交流できる機会は地域・家庭環境によって大きく異なります。</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       Section 3: What We Do（活動内容）
+  ======================================== -->
+  <section id="what-we-do">
+    <div class="container">
+      <div class="whatwedo-inner">
+
+        <div class="whatwedo-img-wrap">
+          <div class="img-ph whatwedo-img">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            IMAGE PLACEHOLDER<br>忍者衣装・活動写真
+          </div>
+          <div class="team-photo-accent" style="border-color: var(--gold);"></div>
+          <div class="whatwedo-img-badge">
+            <strong>3ヶ月</strong>
+            <span>待ち</span>
+          </div>
+        </div>
+
+        <div>
+          <p class="eyebrow">What We Do</p>
+          <h2 class="section-heading">忍者Challenge<br>とは</h2>
+          <div class="steps">
+
+            <div class="step">
+              <div class="step-num">STEP 1</div>
+              <div class="step-body">
+                <h3>忍者に変身する</h3>
+                <p>子どもたちは本格的な忍者衣装を着て、ロールプレイに備えます。衣装を身にまとうことで「もうひとりの自分」になれます。</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num">STEP 2</div>
+              <div class="step-body">
+                <h3>外国人観光客にインタビュー</h3>
+                <p>浅草の観光スポットで外国人観光客に話しかけ、あらかじめ準備した質問で英語インタビューを行います。</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num">STEP 3</div>
+              <div class="step-body">
+                <h3>英語で会話を完結させる</h3>
+                <p>質問・返答・お礼まで一連の会話を自力でやりきります。「伝わった」という実体験が子どもの自己効力感を根本から変えます。</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       Section 4: Impact（実績数字）
+  ======================================== -->
+  <section id="impact">
+    <div class="container">
+      <p class="eyebrow">Impact</p>
+      <h2 class="section-heading">活動の実績</h2>
+      <div class="impact-grid">
+
+        <div class="impact-item">
+          <div class="impact-number">120<span>組</span></div>
+          <div class="impact-label">累計参加家族数</div>
+        </div>
+
+        <div class="impact-item">
+          <div class="impact-number">98<span>%</span></div>
+          <div class="impact-label">参加後の満足率</div>
+        </div>
+
+        <div class="impact-item">
+          <div class="impact-number" style="font-size:clamp(20px,2.2vw,30px)">3ヶ月待ち</div>
+          <div class="impact-label">現在の予約待ち期間</div>
+        </div>
+
+        <div class="impact-item">
+          <div class="impact-number" style="font-size:clamp(22px,2.5vw,34px)">完全<span>無料</span></div>
+          <div class="impact-label">参加費</div>
+        </div>
+
+        <div class="impact-item">
+          <div class="impact-number">26<span>名</span></div>
+          <div class="impact-label">サポートボランティア数</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       Section 5: Vision（ビジョン）
+  ======================================== -->
+  <section id="vision">
+    <div class="container">
+      <div class="vision-inner">
+        <span class="vision-mark">"</span>
+        <p class="vision-quote">すべての子どもが、臆せず<br>世界に話しかけられる社会へ。</p>
+        <div class="vision-sub-line"></div>
+        <p class="vision-desc">
+          言語の壁は、学習量だけでは越えられません。必要なのは、「伝わる」という小さな成功体験の積み重ねです。忍者Challengeは、その最初の一歩をすべての子どもに届けることを目指しています。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       Section 6: Team（運営者プロフィール）
+  ======================================== -->
+  <section id="team">
+    <div class="container">
+      <p class="eyebrow">Team</p>
+      <h2 class="section-heading">運営者について</h2>
+      <div class="team-inner">
+
+        <div class="team-photo-wrap">
+          <div class="img-ph team-photo">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            PHOTO
+          </div>
+          <div class="team-photo-accent"></div>
+          <div class="team-badge">代表</div>
+        </div>
+
+        <div class="team-right">
+          <h3 class="team-name">當間 奈津子</h3>
+          <p class="team-title">忍者Challenge・KIDS 代表 ／ 英語教育コーディネーター</p>
+          <p class="team-bio">
+            長年にわたり都内の小学校で英語教育に携わり、子どもたちの「話す自信」を育む実践的なプログラム開発に取り組んできました。2022年より浅草を拠点に本活動を開始。外国人観光客の多い観光地という環境を活かし、リアルなコミュニケーションの場を提供することで、延べ120組以上の子どもたちの英語体験を支援してきました。現在は行政・企業との連携を模索しながら、活動の全国展開を目指しています。
+          </p>
+          <div class="team-tags">
+            <span class="tag">英語教育</span>
+            <span class="tag">体験学習</span>
+            <span class="tag">インバウンド教育</span>
+            <span class="tag">NPO活動</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       Section 7: CTA（二段構成）
+  ======================================== -->
+  <section id="cta">
+
+    <!-- 上段：企業・行政向け -->
+    <div class="cta-upper">
+      <div class="container">
+
+        <div class="cta-text">
+          <p class="eyebrow">For Partners</p>
+          <h2 class="section-heading">協賛・連携を<br>ご検討の方へ</h2>
+          <p>本活動は、企業や行政との連携によってさらなる規模拡大を目指しています。協賛・プログラム共同開発・場所のご提供など、様々な形でのご支援をお待ちしております。</p>
+          <div class="cta-feature">協賛・スポンサーシップ</div>
+          <div class="cta-feature">プログラムの共同開発</div>
+          <div class="cta-feature">会場・施設の提供</div>
+          <div class="cta-feature">メディア・広報連携</div>
+        </div>
+
+        <div class="form-card">
+          <p class="form-card-title">お問い合わせフォーム</p>
+          <form>
+            <div class="form-row">
+              <div class="form-group">
+                <label>お名前 <span class="req">*</span></label>
+                <input type="text" placeholder="田中 太郎">
+              </div>
+              <div class="form-group">
+                <label>会社名・団体名</label>
+                <input type="text" placeholder="株式会社〇〇">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>メールアドレス <span class="req">*</span></label>
+              <input type="email" placeholder="taro@example.com">
+            </div>
+            <div class="form-group">
+              <label>メッセージ <span class="req">*</span></label>
+              <textarea placeholder="ご連絡内容をご記入ください"></textarea>
+            </div>
+            <button type="submit" class="btn-submit">送信する</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 下段：保護者向け -->
+    <div class="cta-lower">
+      <div class="container">
+
+        <div class="cta-text">
+          <p class="eyebrow">For Parents</p>
+          <h2 class="section-heading">参加をご希望の<br>保護者の方へ</h2>
+          <p>現在、参加申し込みはInstagramのDMにて受け付けています。最新のイベント情報・募集状況はInstagramでご確認ください。</p>
+          <p style="font-size:13px; color: var(--red); font-weight:600;">現在 3ヶ月待ちとなっております。フォローしてお待ちください。</p>
+        </div>
+
+        <div class="cta-lower-right">
+          <p>Instagramをフォローすると、募集開始時にいち早くお知らせを受け取れます。ストーリーズでは活動の様子も随時発信しています。</p>
+          <a href="#" class="insta-card">
+            <div class="insta-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </div>
+            <div class="insta-text">
+              <strong>@ninjachallenge_kids</strong>
+              <span>Instagramをフォローする</span>
+            </div>
+            <div class="insta-arrow">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ========================================
+       Footer
+  ======================================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-logo">
+        <div class="footer-logo-mark">忍</div>
+        忍者Challenge・KIDS
+      </div>
+      <span class="footer-copy">&copy; 2026 忍者Challenge・KIDS. All rights reserved.</span>
+    </div>
+  </footer>
+
+</body>
+</html>
