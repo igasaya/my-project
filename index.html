@@ -6,23 +6,21 @@
   <title>忍者Challenge・KIDS</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@300;400&family=Playfair+Display:wght@300;400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     /* ── Reset & Base ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy:   #1A1A1A;
       --red:    #E2231A;
-      --red-dk: #B51A12;
-      --gold:   #E8A020;
-      --cream:  #F7F4F0;
-      --gray-1: #F2F0EC;
-      --gray-2: #E0DDD8;
-      --gray-3: #9A9690;
-      --text:   #1A1A1A;
-      --text-2: #333333;
+      --red-dk: #C41A12;
+      --black:  #1A1A1A;
       --white:  #FFFFFF;
+      --cream:  #F7F4F0;
+      --text:   #333333;
+      --sub:    #767676;
+      --border: #E5E5E5;
+      --gray-1: #F2F0EC;
     }
 
     html { scroll-behavior: smooth; }
@@ -38,7 +36,7 @@
     img { display: block; max-width: 100%; }
 
     .container {
-      max-width: 1160px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0 40px;
     }
@@ -56,36 +54,54 @@
     }
 
     .section-heading {
-      font-size: clamp(24px, 3.2vw, 36px);
+      font-family: "Playfair Display", "Noto Serif JP", serif;
+      font-size: clamp(28px, 3.5vw, 40px);
       font-weight: 300;
-      color: var(--navy);
-      line-height: 1.3;
+      color: var(--black);
+      line-height: 1.2;
+      letter-spacing: 0.02em;
       margin-bottom: 48px;
     }
 
     .img-ph {
-      background: var(--gray-2);
+      background: var(--border);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      color: var(--gray-3);
+      color: var(--sub);
       font-size: 11px;
       letter-spacing: 0.12em;
     }
     .img-ph svg { opacity: 0.5; }
+
+    /* ── Fade-in animation ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     /* ── Navigation ── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 200;
-      background: rgba(26, 26, 26, 0.97);
-      backdrop-filter: blur(8px);
+      background: var(--white);
+      border-bottom: 1px solid transparent;
       height: 64px;
       display: flex;
       align-items: center;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    nav.scrolled {
+      border-color: var(--border);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
     }
     nav .container {
       display: flex;
@@ -96,8 +112,7 @@
     .nav-logo {
       font-size: 15px;
       font-weight: 700;
-      color: var(--white);
-      letter-spacing: 0.02em;
+      color: var(--black);
       display: flex;
       align-items: center;
       gap: 10px;
@@ -105,27 +120,29 @@
     .nav-logo-mark {
       width: 28px; height: 28px;
       background: var(--red);
-      border-radius: 4px;
+      border-radius: 0;
       display: flex; align-items: center; justify-content: center;
       font-size: 14px;
+      color: var(--white);
     }
     .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
     .nav-links a {
-      font-size: 13px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.75);
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--black);
       text-decoration: none;
       transition: color 0.2s;
     }
-    .nav-links a:hover { color: #fff; }
+    .nav-links a:hover { color: var(--red); }
     .nav-cta {
       background: var(--red);
-      color: #fff !important;
-      padding: 8px 18px;
+      color: var(--white) !important;
+      padding: 10px 22px;
       border-radius: 0;
-      font-weight: 700 !important;
+      font-size: 15px;
+      font-weight: 500 !important;
     }
-    .nav-cta:hover { background: var(--red-dk); }
+    .nav-cta:hover { background: var(--red-dk) !important; }
 
     /* ── Section 1: Hero ── */
     #hero {
@@ -134,6 +151,8 @@
       position: relative;
       display: flex;
       align-items: center;
+      justify-content: center;
+      text-align: center;
       overflow: hidden;
     }
     .hero-video-wrap {
@@ -143,14 +162,8 @@
       background: #000;
       z-index: 0;
     }
-    .hero-video-wrap iframe {
-      position: absolute;
-      top: 50%; left: 50%;
-      width: max(100%, 177.78vh);
-      height: max(56.25vw, 100%);
-      transform: translate(-50%, -50%);
+    .hero-video-wrap video {
       pointer-events: none;
-      border: none;
     }
     .hero-video-overlay {
       position: absolute;
@@ -161,8 +174,9 @@
     .hero-content {
       position: relative;
       z-index: 2;
-      color: #fff;
-      max-width: 600px;
+      color: var(--white);
+      max-width: 860px;
+      padding: 0 24px;
     }
     .hero-eyebrow {
       font-family: "Inter", sans-serif;
@@ -170,127 +184,114 @@
       font-weight: 700;
       letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 22px;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 24px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      justify-content: center;
+      gap: 12px;
     }
-    .hero-eyebrow::before {
+    .hero-eyebrow::before,
+    .hero-eyebrow::after {
       content: "";
       display: inline-block;
-      width: 32px; height: 2px;
-      background: var(--gold);
+      width: 28px; height: 1px;
+      background: rgba(255,255,255,0.5);
     }
     .hero-headline {
-      font-size: clamp(40px, 5.5vw, 72px);
+      font-family: "Playfair Display", "Noto Serif JP", serif;
+      font-size: clamp(36px, 5.5vw, 64px);
       font-weight: 300;
-      line-height: 1.18;
-      margin-bottom: 22px;
-      letter-spacing: -0.01em;
-    }
-    .hero-headline em {
-      font-style: normal;
-      color: var(--gold);
+      line-height: 1.1;
+      margin-bottom: 20px;
+      letter-spacing: 0.02em;
     }
     .hero-sub {
-      font-size: clamp(14px, 1.6vw, 17px);
-      color: rgba(255,255,255,0.7);
+      font-size: clamp(14px, 1.6vw, 20px);
+      color: rgba(255,255,255,0.85);
       margin-bottom: 44px;
-      line-height: 1.8;
+      line-height: 1.7;
     }
-    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; justify-content: center; }
     .btn-hero-primary {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       background: var(--red);
-      color: #fff;
-      padding: 15px 32px;
-      font-size: 14px;
-      font-weight: 700;
+      color: var(--white);
+      padding: 16px 40px;
+      font-size: 16px;
+      font-weight: 500;
       text-decoration: none;
       border-radius: 0;
-      transition: background 0.2s, transform 0.15s;
-      letter-spacing: 0.03em;
+      transition: background 0.2s;
+      letter-spacing: 0.05em;
       border: none; cursor: pointer;
     }
-    .btn-hero-primary:hover { background: var(--red-dk); transform: translateY(-1px); }
+    .btn-hero-primary:hover { background: var(--red-dk); }
     .btn-hero-ghost {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       background: transparent;
-      color: rgba(255,255,255,0.8);
-      padding: 15px 24px;
-      font-size: 14px;
+      color: rgba(255,255,255,0.85);
+      padding: 14px 38px;
+      font-size: 16px;
       font-weight: 500;
       text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.25);
+      border: 1px solid rgba(255,255,255,0.5);
       border-radius: 0;
       transition: border-color 0.2s, color 0.2s;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.04em;
     }
-    .btn-hero-ghost:hover { border-color: rgba(255,255,255,0.6); color: #fff; }
+    .btn-hero-ghost:hover { border-color: rgba(255,255,255,0.9); color: var(--white); }
     .hero-stat-row {
       margin-top: 60px;
       display: flex;
-      gap: 32px;
+      gap: 40px;
       padding-top: 32px;
-      border-top: 1px solid rgba(255,255,255,0.12);
+      border-top: 1px solid rgba(255,255,255,0.15);
+      justify-content: center;
     }
     .hero-stat strong {
       display: block;
       font-family: "Inter", sans-serif;
       font-size: 26px;
-      font-weight: 800;
-      color: #fff;
+      font-weight: 700;
+      color: var(--white);
       line-height: 1;
       margin-bottom: 4px;
     }
     .hero-stat span {
       font-size: 11px;
-      color: rgba(255,255,255,0.5);
+      color: rgba(255,255,255,0.55);
       letter-spacing: 0.05em;
     }
 
     /* ── Section 2: Problem ── */
     #problem {
-      padding: 168px 0;
+      padding: 120px 0;
       background: var(--cream);
     }
     .problem-intro {
-      max-width: 540px;
+      max-width: 580px;
       margin-bottom: 64px;
     }
     .problem-intro p {
-      font-size: 15px;
-      color: var(--text-2);
-      line-height: 1.9;
+      font-size: 18px;
+      color: var(--text);
+      line-height: 1.7;
     }
     .problem-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      background: var(--gray-2);
-      border: 2px solid var(--gray-2);
+      gap: 24px;
     }
     .problem-card {
       background: var(--white);
       padding: 40px 36px;
-      position: relative;
+      border-top: 3px solid var(--red);
     }
-    .problem-card::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: var(--red);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s ease;
-    }
-    .problem-card:hover::before { transform: scaleX(1); }
     .problem-num {
       font-family: "Inter", sans-serif;
       font-size: 11px;
@@ -300,79 +301,73 @@
       margin-bottom: 20px;
     }
     .problem-icon-wrap {
-      width: 52px; height: 52px;
-      background: #FDF0EE;
-      border-radius: 8px;
+      width: 48px; height: 48px;
+      background: #FEF0EF;
       display: flex; align-items: center; justify-content: center;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
     .problem-card h3 {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 12px;
-      line-height: 1.5;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--black);
+      margin-bottom: 14px;
+      line-height: 1.4;
     }
     .problem-card p {
-      font-size: 13px;
-      color: var(--text-2);
-      line-height: 1.9;
+      font-size: 16px;
+      color: var(--text);
+      line-height: 1.7;
     }
 
     /* ── Section 3: What We Do ── */
     #what-we-do {
-      padding: 168px 0;
+      padding: 120px 0;
       background: var(--white);
     }
     .whatwedo-inner {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 88px;
+      gap: 80px;
       align-items: center;
     }
-    .whatwedo-img-wrap {
-      position: relative;
-    }
+    .whatwedo-img-wrap { position: relative; }
     .whatwedo-img {
       width: 100%;
       aspect-ratio: 3/4;
-      max-height: 540px;
+      max-height: 520px;
     }
     .whatwedo-img-badge {
       position: absolute;
-      bottom: -20px;
-      right: -20px;
-      width: 120px; height: 120px;
+      bottom: -20px; right: -20px;
+      width: 110px; height: 110px;
       background: var(--red);
       border-radius: 50%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      color: #fff;
+      color: var(--white);
       text-align: center;
-      box-shadow: 0 8px 24px rgba(200,53,42,0.35);
+      box-shadow: 0 8px 24px rgba(226,35,26,0.3);
     }
     .whatwedo-img-badge strong {
       font-family: "Inter", sans-serif;
-      font-size: 22px;
-      font-weight: 800;
+      font-size: 20px;
+      font-weight: 700;
       line-height: 1;
     }
     .whatwedo-img-badge span {
       font-size: 10px;
       opacity: 0.85;
       margin-top: 4px;
-      letter-spacing: 0.05em;
     }
-    .steps { display: flex; flex-direction: column; gap: 0; }
+    .steps { display: flex; flex-direction: column; }
     .step {
       display: flex;
       gap: 22px;
       align-items: flex-start;
       padding: 28px 0;
-      border-bottom: 1px solid var(--gray-1);
-      position: relative;
+      border-bottom: 1px solid var(--border);
     }
     .step:first-child { padding-top: 0; }
     .step:last-child { border-bottom: none; }
@@ -383,114 +378,100 @@
       font-weight: 700;
       color: var(--red);
       letter-spacing: 0.1em;
-      padding-top: 3px;
-      width: 36px;
+      padding-top: 4px;
+      width: 48px;
     }
     .step-body h3 {
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--navy);
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--black);
       margin-bottom: 8px;
+      line-height: 1.3;
     }
     .step-body p {
-      font-size: 13px;
-      color: var(--text-2);
-      line-height: 1.9;
+      font-size: 16px;
+      color: var(--text);
+      line-height: 1.7;
     }
 
     /* ── Section 4: Impact ── */
     #impact {
-      padding: 168px 0;
-      background: var(--navy);
+      padding: 120px 0;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
     }
-    #impact .eyebrow { color: var(--gold); }
-    #impact .section-heading { color: #fff; margin-bottom: 64px; }
     .impact-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 1px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.08);
+      gap: 0;
+      border: 1px solid var(--border);
     }
     .impact-item {
-      background: rgba(255,255,255,0.04);
-      padding: 40px 24px;
+      padding: 48px 24px;
       text-align: center;
-      transition: background 0.2s;
+      border-right: 1px solid var(--border);
     }
-    .impact-item:hover { background: rgba(255,255,255,0.08); }
+    .impact-item:last-child { border-right: none; }
     .impact-number {
-      font-family: "Inter", sans-serif;
-      font-size: clamp(30px, 3.2vw, 46px);
-      font-weight: 800;
-      color: #fff;
+      font-family: "Inter", "Noto Sans JP", sans-serif;
+      font-size: clamp(28px, 3.2vw, 56px);
+      font-weight: 300;
+      color: var(--red);
       line-height: 1;
       margin-bottom: 12px;
       letter-spacing: -0.02em;
     }
-    .impact-number span {
-      color: var(--gold);
-    }
     .impact-label {
-      font-size: 12px;
-      color: rgba(255,255,255,0.55);
-      line-height: 1.6;
-      letter-spacing: 0.03em;
+      font-size: 14px;
+      color: var(--sub);
+      line-height: 1.5;
+      letter-spacing: 0.05em;
     }
 
     /* ── Section 5: Vision ── */
     #vision {
-      padding: 192px 0;
-      background: #0F1825;
-      position: relative;
-      overflow: hidden;
+      padding: 120px 0;
+      background: var(--black);
       text-align: center;
     }
-    #vision::before {
-      content: "";
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(200,53,42,0.12) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .vision-inner { position: relative; z-index: 1; }
-    .vision-mark {
-      font-family: "Inter", sans-serif;
-      font-size: 80px;
-      font-weight: 800;
-      color: var(--red);
-      opacity: 0.35;
-      line-height: 0.7;
-      display: block;
-      margin-bottom: 16px;
-    }
+    .vision-inner { max-width: 860px; margin: 0 auto; }
     .vision-quote {
-      font-size: clamp(22px, 3.5vw, 42px);
+      font-family: "Playfair Display", "Noto Serif JP", serif;
+      font-size: clamp(22px, 3.5vw, 40px);
       font-weight: 300;
-      color: #fff;
-      line-height: 1.5;
-      max-width: 840px;
+      color: var(--white);
+      line-height: 1.4;
+      max-width: 800px;
       margin: 0 auto 36px;
-      letter-spacing: -0.01em;
+      letter-spacing: 0.02em;
+    }
+    .vision-quote::before {
+      content: '"';
+      color: var(--red);
+      font-size: 80px;
+      line-height: 0;
+      display: block;
+      margin-bottom: 32px;
+      font-family: "Playfair Display", Georgia, serif;
+      opacity: 0.9;
     }
     .vision-sub-line {
-      width: 48px; height: 2px;
+      width: 48px; height: 1px;
       background: var(--red);
       margin: 0 auto 32px;
     }
     .vision-desc {
-      font-size: 14px;
-      color: rgba(255,255,255,0.55);
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
       max-width: 580px;
       margin: 0 auto;
-      line-height: 1.95;
+      line-height: 1.9;
     }
 
     /* ── Section 6: Team ── */
     #team {
-      padding: 168px 0;
+      padding: 120px 0;
       background: var(--cream);
     }
     .team-inner {
@@ -500,10 +481,7 @@
       align-items: start;
     }
     .team-photo-wrap { position: relative; }
-    .team-photo {
-      width: 100%;
-      aspect-ratio: 1;
-    }
+    .team-photo { width: 100%; aspect-ratio: 1; }
     .team-photo-accent {
       position: absolute;
       bottom: -12px; right: -12px;
@@ -514,50 +492,51 @@
     .team-badge {
       position: absolute;
       top: 16px; left: -16px;
-      background: var(--navy);
-      color: #fff;
+      background: var(--black);
+      color: var(--white);
       font-size: 11px;
       font-weight: 700;
-      padding: 6px 12px;
+      padding: 6px 14px;
       letter-spacing: 0.1em;
     }
     .team-right { padding-top: 8px; }
     .team-name {
-      font-size: clamp(22px, 2.5vw, 28px);
-      font-weight: 900;
-      color: var(--navy);
+      font-family: "Playfair Display", "Noto Serif JP", serif;
+      font-size: clamp(24px, 2.5vw, 32px);
+      font-weight: 300;
+      color: var(--black);
       margin-bottom: 6px;
+      letter-spacing: 0.02em;
     }
     .team-title {
-      font-size: 13px;
+      font-size: 14px;
       color: var(--red);
       font-weight: 500;
       margin-bottom: 28px;
       letter-spacing: 0.03em;
     }
     .team-bio {
-      font-size: 14px;
-      color: var(--text-2);
-      line-height: 1.95;
+      font-size: 16px;
+      color: var(--text);
+      line-height: 1.9;
       margin-bottom: 28px;
     }
     .team-tags { display: flex; flex-wrap: wrap; gap: 8px; }
     .tag {
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--navy);
-      background: rgba(27,40,72,0.08);
-      padding: 5px 12px;
-      border-radius: 99px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--black);
+      background: rgba(26,26,26,0.07);
+      padding: 5px 14px;
+      border-radius: 0;
       letter-spacing: 0.04em;
     }
 
     /* ── Section 7: CTA ── */
     #cta { background: var(--white); }
-
     .cta-upper {
-      padding: 168px 0;
-      border-bottom: 1px solid var(--gray-2);
+      padding: 120px 0;
+      border-bottom: 1px solid var(--border);
     }
     .cta-upper .container,
     .cta-lower .container {
@@ -566,105 +545,104 @@
       gap: 88px;
       align-items: start;
     }
-    .cta-lower { padding: 144px 0; background: var(--cream); }
-
+    .cta-lower { padding: 120px 0; background: var(--cream); }
     .cta-text .section-heading { margin-bottom: 16px; }
     .cta-text p {
-      font-size: 14px;
-      color: var(--text-2);
+      font-size: 16px;
+      color: var(--text);
       line-height: 1.9;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
     .cta-feature {
       display: flex;
       align-items: flex-start;
       gap: 10px;
-      font-size: 13px;
-      color: var(--text-2);
+      font-size: 15px;
+      color: var(--text);
       margin-bottom: 10px;
     }
     .cta-feature::before {
       content: "";
       flex-shrink: 0;
       width: 18px; height: 18px;
-      background: #FDF0EE;
-      border-radius: 50%;
+      background: #FEF0EF;
       background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 9l3.5 3.5L14 6' stroke='%23E2231A' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
       background-size: contain;
       margin-top: 2px;
     }
-
     .form-card {
       background: var(--white);
-      border: 1px solid var(--gray-2);
-      padding: 36px;
+      border: 1px solid var(--border);
+      padding: 40px;
       border-radius: 0;
     }
     .form-card-title {
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 700;
-      color: var(--navy);
+      color: var(--black);
       margin-bottom: 24px;
       padding-bottom: 16px;
-      border-bottom: 1px solid var(--gray-1);
+      border-bottom: 1px solid var(--border);
     }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .form-group { margin-bottom: 16px; }
+    .form-group { margin-bottom: 20px; }
     .form-group label {
       display: block;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--text-2);
-      margin-bottom: 6px;
-      letter-spacing: 0.04em;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--black);
+      margin-bottom: 8px;
+      letter-spacing: 0.03em;
     }
     .form-group label .req { color: var(--red); margin-left: 2px; }
     .form-group input,
     .form-group textarea {
       width: 100%;
-      padding: 10px 14px;
-      border: 1px solid var(--gray-2);
-      background: var(--gray-1);
-      font-size: 13px;
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      background: var(--white);
+      font-size: 16px;
       font-family: inherit;
       color: var(--text);
       outline: none;
       border-radius: 0;
-      transition: border-color 0.2s, background 0.2s;
+      transition: border-color 0.2s;
     }
     .form-group input:focus,
     .form-group textarea:focus {
-      border-color: var(--navy);
-      background: var(--white);
+      border-color: var(--red);
     }
-    .form-group textarea { height: 104px; resize: vertical; }
+    .form-group textarea { min-height: 160px; resize: vertical; }
     .btn-submit {
       width: 100%;
-      padding: 14px;
+      padding: 16px;
       background: var(--red);
-      color: #fff;
-      font-size: 14px;
-      font-weight: 700;
+      color: var(--white);
+      font-size: 16px;
+      font-weight: 500;
       font-family: inherit;
       border: none;
       border-radius: 0;
       cursor: pointer;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
       transition: background 0.2s;
       margin-top: 4px;
     }
     .btn-submit:hover { background: var(--red-dk); }
-
     .cta-lower-right {
       display: flex;
       flex-direction: column;
       gap: 24px;
       justify-content: center;
     }
-    .cta-lower-right p { font-size: 14px; color: var(--text-2); line-height: 1.9; }
+    .cta-lower-right p {
+      font-size: 16px;
+      color: var(--text);
+      line-height: 1.9;
+    }
     .insta-card {
       background: var(--white);
-      border: 1px solid var(--gray-2);
+      border: 1px solid var(--border);
       padding: 28px 32px;
       border-radius: 0;
       display: flex;
@@ -673,32 +651,29 @@
       text-decoration: none;
       transition: box-shadow 0.2s, transform 0.15s;
     }
-    .insta-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.09); transform: translateY(-2px); }
+    .insta-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); transform: translateY(-2px); }
     .insta-icon {
       width: 48px; height: 48px;
-      border-radius: 12px;
+      border-radius: 10px;
       background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
     }
     .insta-text strong {
       display: block;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 700;
-      color: var(--navy);
+      color: var(--black);
       margin-bottom: 2px;
     }
-    .insta-text span {
-      font-size: 12px;
-      color: var(--gray-3);
-    }
-    .insta-arrow { margin-left: auto; color: var(--gray-3); }
+    .insta-text span { font-size: 13px; color: var(--sub); }
+    .insta-arrow { margin-left: auto; color: var(--sub); }
 
     /* ── Footer ── */
     footer {
-      background: #0D1422;
+      background: var(--black);
       color: rgba(255,255,255,0.45);
-      padding: 44px 0;
+      padding: 48px 0;
     }
     footer .container {
       display: flex;
@@ -706,60 +681,60 @@
       justify-content: space-between;
     }
     .footer-logo {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 700;
-      color: #fff;
+      color: var(--white);
       display: flex;
       align-items: center;
       gap: 10px;
     }
     .footer-logo-mark {
-      width: 24px; height: 24px;
+      width: 26px; height: 26px;
       background: var(--red);
-      border-radius: 3px;
+      border-radius: 0;
       display: flex; align-items: center; justify-content: center;
-      font-size: 12px;
+      font-size: 13px;
+      color: var(--white);
     }
-    .footer-copy { font-size: 12px; }
+    .footer-copy { font-size: 13px; }
 
     /* ── Responsive ── */
     @media (max-width: 900px) {
       .impact-grid { grid-template-columns: repeat(3, 1fr); }
-      .impact-grid .impact-item:nth-child(4),
-      .impact-grid .impact-item:nth-child(5) { grid-column: span 1; }
+      .impact-item:nth-child(4),
+      .impact-item:nth-child(5) { border-top: 1px solid var(--border); }
+      .impact-item:nth-child(3) { border-right: none; }
     }
 
     @media (max-width: 768px) {
       .container { padding: 0 20px; }
       .nav-links { display: none; }
 
-      #hero { min-height: auto; padding: 150px 0 96px; }
-      .hero-content { max-width: 100%; }
-      .hero-stat-row { gap: 20px; }
+      #hero { min-height: auto; padding: 120px 0 80px; }
 
-      #problem { padding: 108px 0; }
-      .problem-grid { grid-template-columns: 1fr; gap: 0; background: none; border: none; }
-      .problem-card { border-bottom: 1px solid var(--gray-2); padding: 32px 0; }
+      #problem { padding: 60px 0; }
+      .problem-grid { grid-template-columns: 1fr; gap: 16px; }
 
-      #what-we-do { padding: 108px 0; }
+      #what-we-do { padding: 60px 0; }
       .whatwedo-inner { grid-template-columns: 1fr; gap: 48px; }
       .whatwedo-img { max-height: 280px; }
-      .whatwedo-img-badge { width: 90px; height: 90px; bottom: -12px; right: -8px; }
+      .whatwedo-img-badge { width: 88px; height: 88px; bottom: -10px; right: -8px; }
 
-      #impact { padding: 108px 0; }
+      #impact { padding: 60px 0; }
       .impact-grid { grid-template-columns: repeat(2, 1fr); }
-      .impact-grid .impact-item:last-child { grid-column: 1 / -1; }
+      .impact-item:nth-child(3) { border-right: 1px solid var(--border); }
+      .impact-item:last-child { grid-column: 1 / -1; border-right: none; }
 
-      #vision { padding: 120px 0; }
+      #vision { padding: 60px 0; }
 
-      #team { padding: 108px 0; }
+      #team { padding: 60px 0; }
       .team-inner { grid-template-columns: 1fr; gap: 36px; }
       .team-photo-wrap { max-width: 200px; }
 
+      .cta-upper { padding: 60px 0; }
+      .cta-lower { padding: 60px 0; }
       .cta-upper .container,
       .cta-lower .container { grid-template-columns: 1fr; gap: 48px; }
-      .cta-upper { padding: 108px 0; }
-      .cta-lower { padding: 108px 0; }
       .form-row { grid-template-columns: 1fr; }
 
       footer .container { flex-direction: column; gap: 12px; text-align: center; }
@@ -769,7 +744,7 @@
 <body>
 
   <!-- Navigation -->
-  <nav>
+  <nav id="main-nav">
     <div class="container">
       <div class="nav-logo">
         <div class="nav-logo-mark">忍</div>
@@ -790,18 +765,24 @@
   ======================================== -->
   <section id="hero">
     <div class="hero-video-wrap">
-      <iframe
-        src="https://www.youtube.com/embed/OBGMbBSK6ew?autoplay=1&mute=1&loop=1&controls=0&playsinline=1&playlist=OBGMbBSK6ew&rel=0&showinfo=0&disablekb=1"
-        allow="autoplay; fullscreen"
-        allowfullscreen
-        title="忍者Challenge・KIDS 活動動画"
-      ></iframe>
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        style="position:absolute; top:50%; left:50%;
+               transform:translate(-50%,-50%);
+               min-width:100%; min-height:100%;
+               object-fit:cover; z-index:0;"
+      >
+        <source src="IMG_0252.mp4" type="video/mp4">
+      </video>
       <div class="hero-video-overlay"></div>
     </div>
     <div class="container" style="position:relative; z-index:2;">
       <div class="hero-content">
         <p class="hero-eyebrow">Ninja Challenge・KIDS — 東京・浅草</p>
-        <h1 class="hero-headline">子どもたちが、<br><em>世界と話す。</em></h1>
+        <h1 class="hero-headline">子どもたちが、<br>世界と話す。</h1>
         <p class="hero-sub">
           忍者の衣装をまとい、外国人観光客に英語でインタビュー。<br>
           浅草発、完全無料の英語体験プログラム。
@@ -836,14 +817,14 @@
   ======================================== -->
   <section id="problem">
     <div class="container">
-      <div class="problem-intro">
+      <div class="problem-intro fade-in">
         <p class="eyebrow">Problem</p>
         <h2 class="section-heading">なぜ、今この<br>活動が必要か</h2>
         <p>日本の子どもたちは英語を学んでいます。しかし「使える英語」を体験できる場は、まだほとんど存在しません。</p>
       </div>
       <div class="problem-grid">
 
-        <div class="problem-card">
+        <div class="problem-card fade-in">
           <p class="problem-num">01</p>
           <div class="problem-icon-wrap">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E2231A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -854,7 +835,7 @@
           <p>学習機会は増えても、実際に話す自信を持てない子どもが多く、「話せない」という苦手意識が早期に定着してしまいます。</p>
         </div>
 
-        <div class="problem-card">
+        <div class="problem-card fade-in">
           <p class="problem-num">02</p>
           <div class="problem-icon-wrap">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E2231A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -866,7 +847,7 @@
           <p>英語教育が充実しても、本物のコミュニケーションとして英語を「使い切る」場所はほとんど存在しません。</p>
         </div>
 
-        <div class="problem-card">
+        <div class="problem-card fade-in">
           <p class="problem-num">03</p>
           <div class="problem-icon-wrap">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E2231A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -889,19 +870,19 @@
     <div class="container">
       <div class="whatwedo-inner">
 
-        <div class="whatwedo-img-wrap">
+        <div class="whatwedo-img-wrap fade-in">
           <div class="img-ph whatwedo-img">
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
             IMAGE PLACEHOLDER<br>忍者衣装・活動写真
           </div>
-          <div class="team-photo-accent" style="border-color: var(--gold);"></div>
+          <div class="team-photo-accent" style="border-color: var(--border);"></div>
           <div class="whatwedo-img-badge">
             <strong>3ヶ月</strong>
             <span>待ち</span>
           </div>
         </div>
 
-        <div>
+        <div class="fade-in">
           <p class="eyebrow">What We Do</p>
           <h2 class="section-heading">忍者Challenge<br>とは</h2>
           <div class="steps">
@@ -942,32 +923,34 @@
   ======================================== -->
   <section id="impact">
     <div class="container">
-      <p class="eyebrow">Impact</p>
-      <h2 class="section-heading">活動の実績</h2>
-      <div class="impact-grid">
+      <div class="fade-in" style="text-align:center; margin-bottom:64px;">
+        <p class="eyebrow">Impact</p>
+        <h2 class="section-heading" style="margin-bottom:0;">活動の実績</h2>
+      </div>
+      <div class="impact-grid fade-in">
 
         <div class="impact-item">
-          <div class="impact-number">120<span>組</span></div>
+          <div class="impact-number">120<span style="font-size:0.6em">組</span></div>
           <div class="impact-label">累計参加家族数</div>
         </div>
 
         <div class="impact-item">
-          <div class="impact-number">98<span>%</span></div>
+          <div class="impact-number">98<span style="font-size:0.6em">%</span></div>
           <div class="impact-label">参加後の満足率</div>
         </div>
 
         <div class="impact-item">
-          <div class="impact-number" style="font-size:clamp(20px,2.2vw,30px)">3ヶ月待ち</div>
+          <div class="impact-number" style="font-size:clamp(20px,2.2vw,34px)">3ヶ月待ち</div>
           <div class="impact-label">現在の予約待ち期間</div>
         </div>
 
         <div class="impact-item">
-          <div class="impact-number" style="font-size:clamp(22px,2.5vw,34px)">完全<span>無料</span></div>
+          <div class="impact-number" style="font-size:clamp(22px,2.5vw,38px)">完全無料</div>
           <div class="impact-label">参加費</div>
         </div>
 
         <div class="impact-item">
-          <div class="impact-number">26<span>名</span></div>
+          <div class="impact-number">26<span style="font-size:0.6em">名</span></div>
           <div class="impact-label">サポートボランティア数</div>
         </div>
 
@@ -980,8 +963,7 @@
   ======================================== -->
   <section id="vision">
     <div class="container">
-      <div class="vision-inner">
-        <span class="vision-mark">"</span>
+      <div class="vision-inner fade-in">
         <p class="vision-quote">すべての子どもが、臆せず<br>世界に話しかけられる社会へ。</p>
         <div class="vision-sub-line"></div>
         <p class="vision-desc">
@@ -996,11 +978,13 @@
   ======================================== -->
   <section id="team">
     <div class="container">
-      <p class="eyebrow">Team</p>
-      <h2 class="section-heading">運営者について</h2>
+      <div class="fade-in" style="margin-bottom:56px;">
+        <p class="eyebrow">Team</p>
+        <h2 class="section-heading" style="margin-bottom:0;">運営者について</h2>
+      </div>
       <div class="team-inner">
 
-        <div class="team-photo-wrap">
+        <div class="team-photo-wrap fade-in">
           <div class="img-ph team-photo">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
             PHOTO
@@ -1009,7 +993,7 @@
           <div class="team-badge">代表</div>
         </div>
 
-        <div class="team-right">
+        <div class="team-right fade-in">
           <h3 class="team-name">當間 奈津子</h3>
           <p class="team-title">忍者Challenge・KIDS 代表 ／ 英語教育コーディネーター</p>
           <p class="team-bio">
@@ -1036,7 +1020,7 @@
     <div class="cta-upper">
       <div class="container">
 
-        <div class="cta-text">
+        <div class="cta-text fade-in">
           <p class="eyebrow">For Partners</p>
           <h2 class="section-heading">協賛・連携を<br>ご検討の方へ</h2>
           <p>本活動は、企業や行政との連携によってさらなる規模拡大を目指しています。協賛・プログラム共同開発・場所のご提供など、様々な形でのご支援をお待ちしております。</p>
@@ -1046,7 +1030,7 @@
           <div class="cta-feature">メディア・広報連携</div>
         </div>
 
-        <div class="form-card">
+        <div class="form-card fade-in">
           <p class="form-card-title">お問い合わせフォーム</p>
           <form>
             <div class="form-row">
@@ -1078,14 +1062,14 @@
     <div class="cta-lower">
       <div class="container">
 
-        <div class="cta-text">
+        <div class="cta-text fade-in">
           <p class="eyebrow">For Parents</p>
           <h2 class="section-heading">参加をご希望の<br>保護者の方へ</h2>
           <p>現在、参加申し込みはInstagramのDMにて受け付けています。最新のイベント情報・募集状況はInstagramでご確認ください。</p>
-          <p style="font-size:13px; color: var(--red); font-weight:600;">現在 3ヶ月待ちとなっております。フォローしてお待ちください。</p>
+          <p style="font-size:14px; color: var(--red); font-weight:600; margin-top:-4px;">現在 3ヶ月待ちとなっております。フォローしてお待ちください。</p>
         </div>
 
-        <div class="cta-lower-right">
+        <div class="cta-lower-right fade-in">
           <p>Instagramをフォローすると、募集開始時にいち早くお知らせを受け取れます。ストーリーズでは活動の様子も随時発信しています。</p>
           <a href="#" class="insta-card">
             <div class="insta-icon">
@@ -1122,6 +1106,26 @@
       <span class="footer-copy">&copy; 2026 忍者Challenge・KIDS. All rights reserved.</span>
     </div>
   </footer>
+
+  <script>
+    // ── Nav scroll shadow ──
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    // ── Fade-in on scroll ──
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    fadeEls.forEach(el => observer.observe(el));
+  </script>
 
 </body>
 </html>
