@@ -6,21 +6,21 @@
   <title>忍者Challenge・KIDS</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@300;400&family=Playfair+Display:wght@300;400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@300;400&family=Cormorant+Garamond:wght@300;400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     /* ── Reset & Base ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --red:    #E2231A;
-      --red-dk: #C41A12;
-      --black:  #1A1A1A;
-      --white:  #FFFFFF;
-      --cream:  #F7F4F0;
-      --text:   #333333;
-      --sub:    #767676;
-      --border: #E5E5E5;
-      --gray-1: #F2F0EC;
+      --accent:    #E9C46A;
+      --accent-dk: #E76F51;
+      --main:      #264653;
+      --white:     #FFFFFF;
+      --cream:     #F8F4EE;
+      --text:      #333333;
+      --sub:       #767676;
+      --border:    #E5E5E5;
+      --gray-1:    #F2F0EC;
     }
 
     html { scroll-behavior: smooth; }
@@ -49,15 +49,15 @@
       font-weight: 700;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--red);
+      color: var(--accent);
       margin-bottom: 14px;
     }
 
     .section-heading {
-      font-family: "Playfair Display", "Noto Serif JP", serif;
+      font-family: "Cormorant Garamond", "Noto Serif JP", serif;
       font-size: clamp(28px, 3.5vw, 40px);
       font-weight: 300;
-      color: var(--black);
+      color: var(--main);
       line-height: 1.2;
       letter-spacing: 0.02em;
       margin-bottom: 48px;
@@ -112,14 +112,14 @@
     .nav-logo {
       font-size: 15px;
       font-weight: 700;
-      color: var(--black);
+      color: var(--main);
       display: flex;
       align-items: center;
       gap: 10px;
     }
     .nav-logo-mark {
       width: 28px; height: 28px;
-      background: var(--red);
+      background: var(--accent);
       border-radius: 0;
       display: flex; align-items: center; justify-content: center;
       font-size: 14px;
@@ -129,20 +129,20 @@
     .nav-links a {
       font-size: 15px;
       font-weight: 400;
-      color: var(--black);
+      color: var(--main);
       text-decoration: none;
       transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--red); }
+    .nav-links a:hover { color: var(--accent); }
     .nav-cta {
-      background: var(--red);
+      background: var(--accent);
       color: var(--white) !important;
       padding: 10px 22px;
       border-radius: 0;
       font-size: 15px;
       font-weight: 500 !important;
     }
-    .nav-cta:hover { background: var(--red-dk) !important; }
+    .nav-cta:hover { background: var(--accent-dk) !important; }
 
     /* ── Section 1: Hero ── */
     #hero {
@@ -159,7 +159,7 @@
       position: absolute;
       inset: 0;
       overflow: hidden;
-      background: #000;
+      background: #0a1a20;
       z-index: 0;
     }
     .hero-video-wrap video {
@@ -199,7 +199,7 @@
       background: rgba(255,255,255,0.5);
     }
     .hero-headline {
-      font-family: "Playfair Display", "Noto Serif JP", serif;
+      font-family: "Cormorant Garamond", "Noto Serif JP", serif;
       font-size: clamp(36px, 5.5vw, 64px);
       font-weight: 300;
       line-height: 1.1;
@@ -217,7 +217,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: var(--red);
+      background: var(--accent);
       color: var(--white);
       padding: 16px 40px;
       font-size: 16px;
@@ -228,7 +228,7 @@
       letter-spacing: 0.05em;
       border: none; cursor: pointer;
     }
-    .btn-hero-primary:hover { background: var(--red-dk); }
+    .btn-hero-primary:hover { background: var(--accent-dk); }
     .btn-hero-ghost {
       display: inline-flex;
       align-items: center;
@@ -290,26 +290,26 @@
     .problem-card {
       background: var(--white);
       padding: 40px 36px;
-      border-top: 3px solid var(--red);
+      border-top: 3px solid var(--accent);
     }
     .problem-num {
       font-family: "Inter", sans-serif;
       font-size: 11px;
       font-weight: 700;
-      color: var(--red);
+      color: var(--accent);
       letter-spacing: 0.2em;
       margin-bottom: 20px;
     }
     .problem-icon-wrap {
       width: 48px; height: 48px;
-      background: #FEF0EF;
+      background: #EFF5F7;
       display: flex; align-items: center; justify-content: center;
       margin-bottom: 20px;
     }
     .problem-card h3 {
       font-size: 22px;
       font-weight: 400;
-      color: var(--black);
+      color: var(--main);
       margin-bottom: 14px;
       line-height: 1.4;
     }
@@ -340,7 +340,7 @@
       position: absolute;
       bottom: -20px; right: -20px;
       width: 110px; height: 110px;
-      background: var(--red);
+      background: var(--accent);
       border-radius: 50%;
       display: flex;
       flex-direction: column;
@@ -348,7 +348,7 @@
       justify-content: center;
       color: var(--white);
       text-align: center;
-      box-shadow: 0 8px 24px rgba(226,35,26,0.3);
+      box-shadow: 0 8px 24px rgba(38,70,83,0.3);
     }
     .whatwedo-img-badge strong {
       font-family: "Inter", sans-serif;
@@ -376,7 +376,7 @@
       font-family: "Inter", sans-serif;
       font-size: 11px;
       font-weight: 700;
-      color: var(--red);
+      color: var(--accent);
       letter-spacing: 0.1em;
       padding-top: 4px;
       width: 48px;
@@ -384,7 +384,7 @@
     .step-body h3 {
       font-size: 22px;
       font-weight: 400;
-      color: var(--black);
+      color: var(--main);
       margin-bottom: 8px;
       line-height: 1.3;
     }
@@ -417,7 +417,7 @@
       font-family: "Inter", "Noto Sans JP", sans-serif;
       font-size: clamp(28px, 3.2vw, 56px);
       font-weight: 300;
-      color: var(--red);
+      color: var(--accent);
       line-height: 1;
       margin-bottom: 12px;
       letter-spacing: -0.02em;
@@ -432,12 +432,12 @@
     /* ── Section 5: Vision ── */
     #vision {
       padding: 120px 0;
-      background: var(--black);
+      background: var(--main);
       text-align: center;
     }
     .vision-inner { max-width: 860px; margin: 0 auto; }
     .vision-quote {
-      font-family: "Playfair Display", "Noto Serif JP", serif;
+      font-family: "Cormorant Garamond", "Noto Serif JP", serif;
       font-size: clamp(22px, 3.5vw, 40px);
       font-weight: 300;
       color: var(--white);
@@ -448,17 +448,17 @@
     }
     .vision-quote::before {
       content: '"';
-      color: var(--red);
+      color: var(--accent);
       font-size: 80px;
       line-height: 0;
       display: block;
       margin-bottom: 32px;
-      font-family: "Playfair Display", Georgia, serif;
+      font-family: "Cormorant Garamond", Georgia, serif;
       opacity: 0.9;
     }
     .vision-sub-line {
       width: 48px; height: 1px;
-      background: var(--red);
+      background: var(--accent);
       margin: 0 auto 32px;
     }
     .vision-desc {
@@ -486,13 +486,13 @@
       position: absolute;
       bottom: -12px; right: -12px;
       width: 100%; height: 100%;
-      border: 2px solid var(--red);
+      border: 2px solid var(--accent);
       z-index: -1;
     }
     .team-badge {
       position: absolute;
       top: 16px; left: -16px;
-      background: var(--black);
+      background: var(--main);
       color: var(--white);
       font-size: 11px;
       font-weight: 700;
@@ -501,16 +501,16 @@
     }
     .team-right { padding-top: 8px; }
     .team-name {
-      font-family: "Playfair Display", "Noto Serif JP", serif;
+      font-family: "Cormorant Garamond", "Noto Serif JP", serif;
       font-size: clamp(24px, 2.5vw, 32px);
       font-weight: 300;
-      color: var(--black);
+      color: var(--main);
       margin-bottom: 6px;
       letter-spacing: 0.02em;
     }
     .team-title {
       font-size: 14px;
-      color: var(--red);
+      color: var(--accent);
       font-weight: 500;
       margin-bottom: 28px;
       letter-spacing: 0.03em;
@@ -525,8 +525,8 @@
     .tag {
       font-size: 12px;
       font-weight: 500;
-      color: var(--black);
-      background: rgba(26,26,26,0.07);
+      color: var(--main);
+      background: rgba(38,70,83,0.08);
       padding: 5px 14px;
       border-radius: 0;
       letter-spacing: 0.04em;
@@ -565,8 +565,8 @@
       content: "";
       flex-shrink: 0;
       width: 18px; height: 18px;
-      background: #FEF0EF;
-      background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 9l3.5 3.5L14 6' stroke='%23E2231A' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background: #EFF5F7;
+      background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 9l3.5 3.5L14 6' stroke='%23264653' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
       background-size: contain;
       margin-top: 2px;
     }
@@ -579,7 +579,7 @@
     .form-card-title {
       font-size: 16px;
       font-weight: 700;
-      color: var(--black);
+      color: var(--main);
       margin-bottom: 24px;
       padding-bottom: 16px;
       border-bottom: 1px solid var(--border);
@@ -590,11 +590,11 @@
       display: block;
       font-size: 14px;
       font-weight: 500;
-      color: var(--black);
+      color: var(--main);
       margin-bottom: 8px;
       letter-spacing: 0.03em;
     }
-    .form-group label .req { color: var(--red); margin-left: 2px; }
+    .form-group label .req { color: var(--accent); margin-left: 2px; }
     .form-group input,
     .form-group textarea {
       width: 100%;
@@ -610,13 +610,13 @@
     }
     .form-group input:focus,
     .form-group textarea:focus {
-      border-color: var(--red);
+      border-color: var(--accent);
     }
     .form-group textarea { min-height: 160px; resize: vertical; }
     .btn-submit {
       width: 100%;
       padding: 16px;
-      background: var(--red);
+      background: var(--accent);
       color: var(--white);
       font-size: 16px;
       font-weight: 500;
@@ -628,7 +628,7 @@
       transition: background 0.2s;
       margin-top: 4px;
     }
-    .btn-submit:hover { background: var(--red-dk); }
+    .btn-submit:hover { background: var(--accent-dk); }
     .cta-lower-right {
       display: flex;
       flex-direction: column;
@@ -663,7 +663,7 @@
       display: block;
       font-size: 15px;
       font-weight: 700;
-      color: var(--black);
+      color: var(--main);
       margin-bottom: 2px;
     }
     .insta-text span { font-size: 13px; color: var(--sub); }
@@ -671,7 +671,7 @@
 
     /* ── Footer ── */
     footer {
-      background: var(--black);
+      background: var(--main);
       color: rgba(255,255,255,0.45);
       padding: 48px 0;
     }
@@ -690,7 +690,7 @@
     }
     .footer-logo-mark {
       width: 26px; height: 26px;
-      background: var(--red);
+      background: var(--accent);
       border-radius: 0;
       display: flex; align-items: center; justify-content: center;
       font-size: 13px;
@@ -827,7 +827,7 @@
         <div class="problem-card fade-in">
           <p class="problem-num">01</p>
           <div class="problem-icon-wrap">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E2231A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#264653" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
             </svg>
           </div>
@@ -838,7 +838,7 @@
         <div class="problem-card fade-in">
           <p class="problem-num">02</p>
           <div class="problem-icon-wrap">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E2231A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#264653" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line>
               <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
             </svg>
@@ -850,7 +850,7 @@
         <div class="problem-card fade-in">
           <p class="problem-num">03</p>
           <div class="problem-icon-wrap">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E2231A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#264653" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle>
               <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
             </svg>
@@ -1066,7 +1066,7 @@
           <p class="eyebrow">For Parents</p>
           <h2 class="section-heading">参加をご希望の<br>保護者の方へ</h2>
           <p>現在、参加申し込みはInstagramのDMにて受け付けています。最新のイベント情報・募集状況はInstagramでご確認ください。</p>
-          <p style="font-size:14px; color: var(--red); font-weight:600; margin-top:-4px;">現在 3ヶ月待ちとなっております。フォローしてお待ちください。</p>
+          <p style="font-size:14px; color: var(--accent); font-weight:600; margin-top:-4px;">現在 3ヶ月待ちとなっております。フォローしてお待ちください。</p>
         </div>
 
         <div class="cta-lower-right fade-in">
