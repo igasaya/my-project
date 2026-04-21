@@ -394,6 +394,70 @@
       line-height: 1.7;
     }
 
+    /* ── Section: Video (YouTube facade) ── */
+    #video {
+      padding: 120px 0;
+      background: var(--cream);
+    }
+    .video-head {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .video-facade {
+      position: relative;
+      max-width: 960px;
+      margin: 0 auto;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      cursor: pointer;
+      overflow: hidden;
+      box-shadow: 0 20px 48px rgba(38,70,83,0.2);
+    }
+    .video-facade img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease, opacity 0.3s;
+    }
+    .video-facade:hover img { transform: scale(1.04); }
+    .video-facade::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.35) 100%);
+      pointer-events: none;
+    }
+    .video-play-btn {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 84px; height: 84px;
+      background: rgba(230, 33, 23, 0.95);
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+      z-index: 2;
+    }
+    .video-facade:hover .video-play-btn {
+      transform: translate(-50%, -50%) scale(1.08);
+      background: rgba(230, 33, 23, 1);
+    }
+    .video-play-btn svg { margin-left: 5px; }
+    .video-facade.playing { cursor: default; }
+    .video-facade.playing img,
+    .video-facade.playing .video-play-btn,
+    .video-facade.playing::after { display: none; }
+    .video-facade iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
     /* ── Section 4: Impact ── */
     #impact {
       padding: 120px 0;
@@ -669,6 +733,15 @@
     .insta-text span { font-size: 13px; color: var(--sub); }
     .insta-arrow { margin-left: auto; color: var(--sub); }
 
+    /* ── YouTube card (shares .insta-card layout) ── */
+    .yt-icon {
+      width: 48px; height: 48px;
+      border-radius: 10px;
+      background: #FF0000;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
     /* ── Footer ── */
     footer {
       background: var(--main);
@@ -714,6 +787,11 @@
 
       #problem { padding: 60px 0; }
       .problem-grid { grid-template-columns: 1fr; gap: 16px; }
+
+      #video { padding: 60px 0; }
+      .video-head { margin-bottom: 32px; }
+      .video-play-btn { width: 64px; height: 64px; }
+      .video-play-btn svg { width: 22px; height: 22px; }
 
       #what-we-do { padding: 60px 0; }
       .whatwedo-inner { grid-template-columns: 1fr; gap: 48px; }
@@ -919,6 +997,29 @@
   </section>
 
   <!-- ========================================
+       Section: Video（YouTube 動画）
+  ======================================== -->
+  <section id="video">
+    <div class="container">
+      <div class="video-head fade-in">
+        <p class="eyebrow">Video</p>
+        <h2 class="section-heading" style="margin-bottom:0;">活動の様子を<br>動画で見る</h2>
+      </div>
+      <div class="video-facade fade-in" data-video-id="p9sQvOzIxWQ" role="button" tabindex="0" aria-label="忍者Challenge・KIDS 活動動画を再生">
+        <img src="https://img.youtube.com/vi/p9sQvOzIxWQ/maxresdefault.jpg"
+             alt="忍者Challenge・KIDS 活動動画"
+             loading="lazy"
+             onerror="this.onerror=null;this.src='https://img.youtube.com/vi/p9sQvOzIxWQ/hqdefault.jpg';">
+        <button class="video-play-btn" aria-label="動画を再生">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
        Section 4: Impact（実績数字）
   ======================================== -->
   <section id="impact">
@@ -1087,6 +1188,20 @@
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
             </div>
           </a>
+          <a href="https://www.youtube.com/@ninja_challenge_kids" target="_blank" rel="noopener noreferrer" class="insta-card">
+            <div class="yt-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+                <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/>
+              </svg>
+            </div>
+            <div class="insta-text">
+              <strong>@ninja_challenge_kids</strong>
+              <span>YouTubeチャンネルを見る</span>
+            </div>
+            <div class="insta-arrow">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </div>
+          </a>
         </div>
 
       </div>
@@ -1125,6 +1240,25 @@
       });
     }, { threshold: 0.12 });
     fadeEls.forEach(el => observer.observe(el));
+
+    // ── YouTube facade: load iframe on click ──
+    document.querySelectorAll('.video-facade').forEach(facade => {
+      const play = () => {
+        if (facade.classList.contains('playing')) return;
+        const id = facade.dataset.videoId;
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0`;
+        iframe.title = 'YouTube video player';
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+        iframe.allowFullscreen = true;
+        facade.appendChild(iframe);
+        facade.classList.add('playing');
+      };
+      facade.addEventListener('click', play);
+      facade.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); }
+      });
+    });
   </script>
 
 </body>
