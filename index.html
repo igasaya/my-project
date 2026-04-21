@@ -771,6 +771,227 @@
     }
     .footer-copy { font-size: 13px; }
 
+    /* ── Testimonials (Impact section) ── */
+    .testimonials-wrap {
+      margin-top: 72px;
+      padding-top: 64px;
+      border-top: 1px solid var(--border);
+    }
+    .testimonials-head {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .testimonials-head h3 {
+      font-family: "Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN", serif;
+      font-size: clamp(22px, 2.6vw, 28px);
+      font-weight: 300;
+      color: var(--main);
+      letter-spacing: 0.02em;
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .testimonial-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 28px 28px 30px;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.2s, transform 0.15s;
+    }
+    .testimonial-card:hover {
+      box-shadow: 0 8px 24px rgba(38,70,83,0.08);
+      transform: translateY(-2px);
+    }
+    .testimonial-stars {
+      color: var(--accent);
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+    }
+    .testimonial-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--main);
+      margin-bottom: 14px;
+      letter-spacing: 0.02em;
+    }
+    .testimonial-body {
+      font-size: 14.5px;
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    /* ── Vision (reworked) ── */
+    .vision-new-desc {
+      font-size: clamp(15px, 1.5vw, 17px);
+      color: rgba(255,255,255,0.85);
+      max-width: 860px;
+      margin: 0 auto 60px;
+      line-height: 1.9;
+      text-align: left;
+    }
+    .vision-roadmap {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .roadmap-item {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 32px 26px;
+      text-align: left;
+    }
+    .roadmap-time {
+      font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .roadmap-label {
+      font-family: "Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN", serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 14px;
+      letter-spacing: 0.02em;
+    }
+    .roadmap-text {
+      font-size: 14px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.75;
+    }
+
+    /* ── Partner audiences ── */
+    .partner-audiences {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .partner-card {
+      background: var(--cream);
+      padding: 22px 22px 20px;
+      border-left: 3px solid var(--accent);
+    }
+    .partner-card-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .partner-emoji {
+      font-size: 20px;
+      line-height: 1;
+    }
+    .partner-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--main);
+      letter-spacing: 0.02em;
+    }
+    .partner-items {
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.8;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .partner-items li {
+      position: relative;
+      padding-left: 13px;
+    }
+    .partner-items li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 5px; height: 1px;
+      background: var(--accent);
+    }
+
+    /* ── Parents CTA (reworked) ── */
+    .parents-essay {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      padding: 28px 30px;
+      margin-bottom: 24px;
+    }
+    .parents-essay h3 {
+      font-family: "Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN", serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--main);
+      margin-bottom: 18px;
+      line-height: 1.5;
+      letter-spacing: 0.02em;
+    }
+    .parents-essay p {
+      font-size: 14.5px;
+      color: var(--text);
+      line-height: 1.9;
+      margin-bottom: 12px;
+    }
+    .parents-essay p:last-child { margin-bottom: 0; }
+    .btn-apply {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 22px 26px;
+      background: var(--accent);
+      color: var(--white);
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      border-radius: 0;
+    }
+    .btn-apply:hover {
+      background: var(--accent-dk);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(231,111,81,0.3);
+    }
+    .btn-apply-icon {
+      width: 48px; height: 48px;
+      background: rgba(255,255,255,0.22);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .btn-apply-text strong {
+      display: block;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+    .btn-apply-text span {
+      font-size: 13px;
+      opacity: 0.9;
+    }
+    .btn-apply-arrow { margin-left: auto; }
+
+    /* ── Team name reading ── */
+    .team-name-reading {
+      display: inline-block;
+      font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--sub);
+      margin-left: 10px;
+      letter-spacing: 0.1em;
+      vertical-align: middle;
+    }
+    .team-bio + .team-bio {
+      margin-top: 14px;
+    }
+
     /* ── Responsive ── */
     @media (max-width: 900px) {
       .impact-grid { grid-template-columns: repeat(3, 1fr); }
@@ -802,8 +1023,18 @@
       .impact-grid { grid-template-columns: repeat(2, 1fr); }
       .impact-item:nth-child(3) { border-right: 1px solid var(--border); }
       .impact-item:last-child { grid-column: 1 / -1; border-right: none; }
+      .testimonials-wrap { margin-top: 48px; padding-top: 40px; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .testimonial-card { padding: 22px 22px 24px; }
 
       #vision { padding: 60px 0; }
+      .vision-roadmap { grid-template-columns: 1fr; gap: 14px; }
+      .roadmap-item { padding: 24px 22px; }
+
+      .partner-audiences { grid-template-columns: 1fr; gap: 12px; }
+      .btn-apply { padding: 18px 20px; gap: 14px; }
+      .btn-apply-icon { width: 42px; height: 42px; }
+      .parents-essay { padding: 22px 22px; }
 
       #team { padding: 60px 0; }
       .team-inner { grid-template-columns: 1fr; gap: 36px; }
@@ -1056,6 +1287,52 @@
         </div>
 
       </div>
+
+      <div class="testimonials-wrap fade-in">
+        <div class="testimonials-head">
+          <p class="eyebrow">Voices</p>
+          <h3>参加された保護者の声</h3>
+        </div>
+        <div class="testimonials-grid">
+
+          <div class="testimonial-card">
+            <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+            <div class="testimonial-name">Little Birds さん</div>
+            <p class="testimonial-body">引っ込み思案の子供たちが最後は自信をもっていきいきしていて、成長に感動しました。子供たちも楽しかったとすごく喜んでいてまた参加したいと言っています。初めて外国人とお話ししたり、知らない人に話しかけることも初めてで、すごい挑戦をさせていただきました。本当に素敵な活動なので応援したいです！</p>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+            <div class="testimonial-name">くろしゃん さん</div>
+            <p class="testimonial-body">引っ込み思案な性格のわが子が、自分から外国の方に話しかける姿を見て本当に感動しました！周りの子がたくさんの体験をする中、親として「うちはそこまでさせてあげられない」と焦る気持ちもありましたが、「格差をなくし、誰もが挑戦できる場を」という理念を知り、ここなら！と思い切って参加しました。</p>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+            <div class="testimonial-name">NJ さん</div>
+            <p class="testimonial-body">姉妹で参加させて頂きました。海外の方に実際にインタビューする機会を頂けて、子ども達の自信に繋がったようです。実施前のワークでは、ドキドキしていた気持ちが、実施後はえっへんに変化していたのを見て嬉しく感じました。</p>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+            <div class="testimonial-name">pow tan さん</div>
+            <p class="testimonial-body">英語はあくまでツールの1つとして、子供が生き生きと学べる大変貴重な機会でした！ボランティアと協賛で運営されていらっしゃいますが、スタッフの方皆さん親しみやすく、出会えたご縁に感謝です。自分は自転車圏内ですが、遠方からの参加が多いと伺い驚きました。</p>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+            <div class="testimonial-name">山本航 さん</div>
+            <p class="testimonial-body">小1の子供がこちらのプログラムに参加させていただきました。やったことのない事は行く前に渋るし、知らない大人に話しかけるのは得意な方ではありませんでしたが、プログラムを通して初めて生の英語に触れ、参加後はすごく満足げな顔で「楽しかった！」と少し成長した顔が見られました！個人個人に役割がある、体験前後に自分の気持ちを内省するワークがあるといったことは本プログラムで初めての経験でした。他にはない体験ができておすすめです！</p>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-stars" aria-label="4 stars">★★★★<span style="opacity:0.35">★</span></div>
+            <div class="testimonial-name">qnoichi さん</div>
+            <p class="testimonial-body">浅草という場所をすごく上手に活用している取組みだと思います。子供が希望して、2回目の参加をしてきました。これからもこの活動が続いていくといいな、と思います。わが子が子供のうちに、また参加できるといいなと思います。</p>
+          </div>
+
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1064,12 +1341,29 @@
   ======================================== -->
   <section id="vision">
     <div class="container">
-      <div class="vision-inner fade-in">
-        <p class="vision-quote">すべての子どもが、臆せず<br>世界に話しかけられる社会へ。</p>
-        <div class="vision-sub-line"></div>
-        <p class="vision-desc">
-          言語の壁は、学習量だけでは越えられません。必要なのは、「伝わる」という小さな成功体験の積み重ねです。忍者Challengeは、その最初の一歩をすべての子どもに届けることを目指しています。
-        </p>
+      <div class="fade-in" style="text-align:center; margin-bottom:48px;">
+        <p class="eyebrow">Vision</p>
+        <h2 class="section-heading" style="color: var(--white); margin-bottom: 0;">私たちが目指す世界</h2>
+      </div>
+      <p class="vision-new-desc fade-in">
+        忍者Challenge・KIDSが目指すのは、浅草での体験イベントにとどまらない。子どもが挑戦する姿を見た大人が「応援したい」と動き出し、企業・地域・教育機関がつながって、次の挑戦の場をつくっていく循環——そんな「挑戦に格差のない社会」を、浅草から全国へ広げていくことが、私たちのゴールだ。
+      </p>
+      <div class="vision-roadmap fade-in">
+        <div class="roadmap-item">
+          <div class="roadmap-time">Now</div>
+          <div class="roadmap-label">今</div>
+          <p class="roadmap-text">浅草1拠点、累計120組以上、完全無償、26名のボランティア</p>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-time">Year 3</div>
+          <div class="roadmap-label">3年後</div>
+          <p class="roadmap-text">企業・学校・自治体と連携した多拠点展開 ＋ 法人提供モデルの確立</p>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-time">Future</div>
+          <div class="roadmap-label">最終的に</div>
+          <p class="roadmap-text">訪日外国人との「リアルな英語体験」を社会インフラへ</p>
+        </div>
       </div>
     </div>
   </section>
@@ -1095,16 +1389,23 @@
         </div>
 
         <div class="team-right fade-in">
-          <h3 class="team-name">當間 奈津子</h3>
-          <p class="team-title">忍者Challenge・KIDS 代表 ／ 英語教育コーディネーター</p>
+          <h3 class="team-name">當間 奈津子<span class="team-name-reading">とうま なつこ</span></h3>
+          <p class="team-title">忍者Challenge・KIDS 代表 ／ 組織開発・人材育成コンサルタント ／ キャリア教育大学講師</p>
           <p class="team-bio">
-            長年にわたり都内の小学校で英語教育に携わり、子どもたちの「話す自信」を育む実践的なプログラム開発に取り組んできました。2022年より浅草を拠点に本活動を開始。外国人観光客の多い観光地という環境を活かし、リアルなコミュニケーションの場を提供することで、延べ120組以上の子どもたちの英語体験を支援してきました。現在は行政・企業との連携を模索しながら、活動の全国展開を目指しています。
+            リクルートにて17年間、100名以上のメンバーのマネジメントといくつもの組織づくりに携わるなかで、ひとつの確信を得た。「人は、信じてもらい、挑戦できる環境があれば、想像をはるかに超えて伸びる」——その面白さと偉大さに魅了され、独立後は組織開発・人材育成のコンサルタントとして活動。現在は大手企業の女性リーダー育成メンター、女性活躍コンサルタントとして活動するかたわら、大学では「生きることと働くこと」をテーマに学生のキャリア形成を支援している。
+          </p>
+          <p class="team-bio">
+            2人の娘を育てる母として「すべての子どもが自分の可能性を信じて育つ社会をつくりたい」という想いから、2022年より浅草を拠点に忍者Challenge・KIDSを立ち上げ。延べ120組以上の子どもたちの挑戦を見届けてきた。現在は企業・自治体・教育機関との連携を通じた全国展開を目指している。
+          </p>
+          <p class="team-bio">
+            女性リーダー、大学生、そして子どもたち——対象は違っても、根っこにある問いはひとつ。「その人の中にある可能性を、どう引き出すか」。挑戦する文化をつくることが、すべての活動を貫くテーマだ。
           </p>
           <div class="team-tags">
-            <span class="tag">英語教育</span>
-            <span class="tag">体験学習</span>
-            <span class="tag">インバウンド教育</span>
-            <span class="tag">NPO活動</span>
+            <span class="tag">組織開発</span>
+            <span class="tag">人材育成</span>
+            <span class="tag">キャリア教育</span>
+            <span class="tag">女性活躍</span>
+            <span class="tag">挑戦文化</span>
           </div>
         </div>
 
@@ -1124,11 +1425,56 @@
         <div class="cta-text fade-in">
           <p class="eyebrow">For Partners</p>
           <h2 class="section-heading">協賛・連携を<br>ご検討の方へ</h2>
-          <p>本活動は、企業や行政との連携によってさらなる規模拡大を目指しています。協賛・プログラム共同開発・場所のご提供など、様々な形でのご支援をお待ちしております。</p>
-          <div class="cta-feature">協賛・スポンサーシップ</div>
-          <div class="cta-feature">プログラムの共同開発</div>
-          <div class="cta-feature">会場・施設の提供</div>
-          <div class="cta-feature">メディア・広報連携</div>
+          <p>本活動は、企業・自治体・教育機関・メディアなど様々な立場の方々との連携により、さらなる規模拡大を目指しています。ご関心のある形に合わせて、どうぞお気軽にお問い合わせください。</p>
+          <div class="partner-audiences">
+
+            <div class="partner-card">
+              <div class="partner-card-head">
+                <span class="partner-emoji" aria-hidden="true">🏢</span>
+                <span class="partner-title">企業・CSR担当の方へ</span>
+              </div>
+              <ul class="partner-items">
+                <li>福利厚生プログラムとしての提供</li>
+                <li>CSR活動としての共同実施</li>
+                <li>協賛・スポンサーシップ</li>
+              </ul>
+            </div>
+
+            <div class="partner-card">
+              <div class="partner-card-head">
+                <span class="partner-emoji" aria-hidden="true">🏛</span>
+                <span class="partner-title">自治体・行政の方へ</span>
+              </div>
+              <ul class="partner-items">
+                <li>地域教育事業としての連携</li>
+                <li>公共施設・会場の提供</li>
+                <li>補助金活用による共同運営</li>
+              </ul>
+            </div>
+
+            <div class="partner-card">
+              <div class="partner-card-head">
+                <span class="partner-emoji" aria-hidden="true">🎓</span>
+                <span class="partner-title">学校・教育機関の方へ</span>
+              </div>
+              <ul class="partner-items">
+                <li>体験学習プログラムとしての導入</li>
+                <li>国際交流イベントとの連携</li>
+              </ul>
+            </div>
+
+            <div class="partner-card">
+              <div class="partner-card-head">
+                <span class="partner-emoji" aria-hidden="true">📢</span>
+                <span class="partner-title">メディア・広報の方へ</span>
+              </div>
+              <ul class="partner-items">
+                <li>取材・特集のご依頼歓迎</li>
+                <li>イベント広報・SNS連携</li>
+              </ul>
+            </div>
+
+          </div>
         </div>
 
         <div class="form-card fade-in">
@@ -1166,12 +1512,35 @@
         <div class="cta-text fade-in">
           <p class="eyebrow">For Parents</p>
           <h2 class="section-heading">参加をご希望の<br>保護者の方へ</h2>
-          <p>現在、参加申し込みはInstagramのDMにて受け付けています。最新のイベント情報・募集状況はInstagramでご確認ください。</p>
-          <p style="font-size:14px; color: var(--accent); font-weight:600; margin-top:-4px;">現在 3ヶ月待ちとなっております。フォローしてお待ちください。</p>
+          <div class="parents-essay">
+            <h3>なぜ「今」この体験が大切なのか</h3>
+            <p>実は、子どもの自己肯定感や「人と関わる力」は、9〜10歳ごろがピークだということがデータでわかっています。</p>
+            <p>この時期を過ぎると、「どう思われるか」が気になり始め、挑戦にブレーキがかかりやすくなります。これが「10歳の壁」です。</p>
+            <p>非認知能力（自信・粘り強さ・他者との関わり方）は、誰かに教わって育つものではなく、「やってみた体験」からしか育ちません。</p>
+            <p>忍者Challenge・KIDSは、まさにその"今しかない時期"に、知らない人に英語で話しかけるというリアルな挑戦の場を届けています。</p>
+            <p>「できたかどうか」より、「やってみた」こと自体が、子どもの一生の土台になる。そう信じて、私たちは活動しています。</p>
+          </div>
+          <p style="font-size:14px; color: var(--accent); font-weight:600;">現在 3ヶ月待ちとなっております。お早めにお申し込みください。</p>
         </div>
 
         <div class="cta-lower-right fade-in">
-          <p>Instagramをフォローすると、募集開始時にいち早くお知らせを受け取れます。ストーリーズでは活動の様子も随時発信しています。</p>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfHmnlFhcBJcEa13M71GvUXe6Day21HL57EZJY5jHnenwQ2Ww/viewform" target="_blank" rel="noopener noreferrer" class="btn-apply">
+            <div class="btn-apply-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+            </div>
+            <div class="btn-apply-text">
+              <strong>イベントに申し込む</strong>
+              <span>お申込みフォーム（Googleフォーム）</span>
+            </div>
+            <div class="btn-apply-arrow">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg>
+            </div>
+          </a>
           <a href="https://www.instagram.com/ninja_challenge_kids/" target="_blank" rel="noopener noreferrer" class="insta-card">
             <div class="insta-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
