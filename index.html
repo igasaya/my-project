@@ -771,6 +771,59 @@
     }
     .footer-copy { font-size: 13px; }
 
+    /* ── Story (founder narrative) ── */
+    #story {
+      padding: 120px 0;
+      background: var(--white);
+    }
+    .story-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .story-head {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .story-head .section-heading {
+      margin-bottom: 0;
+    }
+    .story-body {
+      font-size: clamp(15px, 1.5vw, 17px);
+      line-height: 2;
+      color: var(--text);
+    }
+    .story-body p {
+      margin-bottom: 22px;
+    }
+    .story-body p:last-child { margin-bottom: 0; }
+    .story-quote {
+      font-family: "Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN", serif;
+      font-size: clamp(17px, 1.8vw, 21px);
+      font-weight: 500;
+      color: var(--main);
+      padding: 24px 28px;
+      border-left: 3px solid var(--accent);
+      background: var(--cream);
+      margin: 32px 0;
+      line-height: 1.7;
+    }
+    .story-emphasis {
+      font-family: "Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN", serif;
+      color: var(--main);
+      font-weight: 500;
+    }
+    .story-signature {
+      font-family: "Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN", serif;
+      font-size: clamp(16px, 1.7vw, 19px);
+      color: var(--main);
+      text-align: center;
+      margin-top: 56px;
+      padding-top: 36px;
+      border-top: 1px solid var(--border);
+      line-height: 1.9;
+      font-weight: 500;
+    }
+
     /* ── Testimonials (Impact section) ── */
     .testimonials-wrap {
       margin-top: 72px;
@@ -1063,6 +1116,11 @@
 
       #hero { min-height: auto; padding: 120px 0 80px; }
 
+      #story { padding: 60px 0; }
+      .story-head { margin-bottom: 36px; }
+      .story-quote { padding: 18px 20px; margin: 24px 0; }
+      .story-signature { margin-top: 36px; padding-top: 24px; }
+
       #problem { padding: 60px 0; }
       .problem-grid { grid-template-columns: 1fr; gap: 16px; }
 
@@ -1150,7 +1208,7 @@
     <div class="container" style="position:relative; z-index:2;">
       <div class="hero-content">
         <p class="hero-eyebrow">Ninja Challenge・KIDS — 東京・浅草</p>
-        <h1 class="hero-headline">子どもたちが、<br>世界と話す。</h1>
+        <h1 class="hero-headline">勇気の一歩が、<br>一生の自信になる。</h1>
         <p class="hero-sub">
           忍者の衣装をまとい、外国人観光客に英語でインタビュー。<br>
           浅草発、完全無料の英語体験プログラム。
@@ -1175,6 +1233,32 @@
             <strong>無料</strong>
             <span>参加費</span>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       Section: Story（創業ストーリー）
+  ======================================== -->
+  <section id="story">
+    <div class="container">
+      <div class="story-inner">
+        <div class="story-head fade-in">
+          <p class="eyebrow">Story</p>
+          <h2 class="section-heading">なぜ、忍者Challenge・KIDSが<br>生まれたのか</h2>
+        </div>
+        <div class="story-body fade-in">
+          <p>浅草で迷子の外国人に道案内をした帰り道、娘がこう言いました。</p>
+          <p class="story-quote">「ママ、英語話せるの？！　あの人たち、とっても喜んでいたね！」</p>
+          <p>その一言が、私の心を動かした。</p>
+          <p>私の家は裕福ではなかった。留学もしていないし、英語の塾にも通っていない。幼い頃の私には、英語を話す必要も、正直、興味もなかった。</p>
+          <p>それでも今、英語で人を助けることができた。そして娘の目が、輝いた。</p>
+          <p>日本の子どもたちには、英語を「使う場所」がない。話す機会も、話しかける勇気も、伝わった時の喜びも——学校でも、塾でも、なかなか体験できない。</p>
+          <p><span class="story-emphasis">英語はツールだ。</span>人を助けるための。何かを伝えるための。誰かとつながるための。</p>
+          <p>「話せた方がいいよね」ではなく、目的を持って、勇気を出して、一歩踏み出すことに意味がある。</p>
+          <p>子どもが外国人観光客に自分の言葉で話しかける体験は、学校でも塾でも得られない非認知能力を育てる。そして観光客にとっては、日本で出会った最高の思い出になる。</p>
+          <p class="story-signature">だから私は、浅草を舞台にこの場をつくることにした。<br>それが、忍者Challenge・KIDSの始まりです。</p>
         </div>
       </div>
     </div>
