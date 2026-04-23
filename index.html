@@ -503,6 +503,170 @@
       border: 0;
     }
 
+    /* ── What We Do: Problem ↔ Activity pairs ── */
+    .pairs-intro {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .pairs-intro .section-heading { margin-bottom: 0; }
+    .pairs-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    .pair-row {
+      display: grid;
+      grid-template-columns: 1fr 36px 1.55fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .pair-problem {
+      background: var(--gray-1);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--sub);
+      padding: 28px 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .pair-num {
+      font-size: 12px;
+      color: var(--sub);
+      letter-spacing: 0.12em;
+      margin-bottom: 12px;
+    }
+    .pair-problem h3 {
+      font-family: "Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN", serif;
+      font-size: 19px;
+      font-weight: 500;
+      color: var(--main);
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    .pair-problem > p {
+      font-size: 14px;
+      color: var(--sub);
+      line-height: 1.75;
+    }
+    .pair-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+    }
+    .pair-arrow svg { display: block; }
+    .pair-activity {
+      background: #E8F4EE;
+      border: 1px solid #C8DED5;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .activity-photo {
+      aspect-ratio: 16 / 9;
+      background: #D1EADA;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6F8A7F;
+      overflow: hidden;
+    }
+    .activity-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .activity-photo-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+    }
+    .activity-photo-placeholder svg { opacity: 0.55; }
+    .activity-body {
+      padding: 24px 26px 26px;
+    }
+    .activity-num {
+      font-size: 12px;
+      font-weight: 700;
+      color: #2D6459;
+      letter-spacing: 0.14em;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+    .activity-body h3 {
+      font-family: "Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN", serif;
+      font-size: clamp(19px, 1.8vw, 22px);
+      font-weight: 500;
+      color: var(--main);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+    .activity-desc {
+      font-size: 14.5px;
+      color: var(--text);
+      line-height: 1.85;
+      margin-bottom: 16px;
+    }
+    .activity-phases {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px 0;
+      background: rgba(255,255,255,0.5);
+      border-radius: 4px;
+      border: 1px solid rgba(45, 100, 89, 0.15);
+    }
+    .activity-phases li {
+      font-size: 13.5px;
+      color: var(--text);
+      line-height: 1.7;
+      padding: 12px 16px;
+      border-top: 1px solid rgba(45, 100, 89, 0.12);
+    }
+    .activity-phases li:first-child { border-top: 0; }
+    .activity-phases li strong {
+      display: inline-block;
+      color: #2D6459;
+      font-weight: 700;
+      margin-right: 6px;
+    }
+    .activity-footer {
+      display: inline-block;
+      background: #F6FBF8;
+      color: #2D6459;
+      padding: 8px 14px;
+      font-size: 12px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+    .pair-activity-soon .activity-photo {
+      background: repeating-linear-gradient(
+        -45deg,
+        #D8E6DF,
+        #D8E6DF 12px,
+        #C5DBD0 12px,
+        #C5DBD0 24px
+      );
+    }
+    .coming-badge {
+      background: var(--main);
+      color: var(--white);
+      padding: 10px 22px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      border-radius: 4px;
+      display: inline-block;
+      z-index: 2;
+      position: relative;
+    }
+    .pair-activity-soon .activity-body {
+      opacity: 0.72;
+    }
+
     /* ── Section 4: Impact ── */
     #impact {
       padding: 120px 0;
@@ -1180,6 +1344,10 @@
       .whatwedo-inner { grid-template-columns: 1fr; gap: 48px; }
       .whatwedo-img { max-height: 280px; }
       .whatwedo-img-badge { width: 88px; height: 88px; bottom: -10px; right: -8px; }
+      .pair-row { grid-template-columns: 1fr; gap: 12px; }
+      .pair-arrow { transform: rotate(90deg); min-height: 28px; }
+      .pair-problem { padding: 20px 22px; }
+      .activity-body { padding: 20px 22px 22px; }
 
       #impact { padding: 60px 0; }
       .impact-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1359,49 +1527,89 @@
   ======================================== -->
   <section id="what-we-do">
     <div class="container">
-      <div class="whatwedo-inner">
+      <div class="pairs-intro fade-in">
+        <p class="eyebrow">What We Do</p>
+        <h2 class="section-heading">忍者Challenge・KIDS<br>イベントについて</h2>
+      </div>
 
-        <div class="whatwedo-img-wrap fade-in">
-          <div class="img-ph whatwedo-img">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            IMAGE PLACEHOLDER<br>忍者衣装・活動写真
+      <div class="pairs-wrap">
+
+        <!-- Pair 01 -->
+        <div class="pair-row fade-in">
+          <div class="pair-problem">
+            <p class="pair-num">01 — 子どもの側</p>
+            <h3>体験・挑戦の格差</h3>
+            <p>お金がないと英語の本物の体験ができない</p>
           </div>
-          <div class="team-photo-accent" style="border-color: var(--border);"></div>
-          <div class="whatwedo-img-badge">
-            <strong>3ヶ月</strong>
-            <span>待ち</span>
+          <div class="pair-arrow" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </div>
+          <div class="pair-activity">
+            <div class="activity-photo">
+              <div class="activity-photo-placeholder" aria-label="写真を追加できます">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                <span>PHOTO</span>
+              </div>
+            </div>
+            <div class="activity-body">
+              <p class="activity-num">活動 01</p>
+              <h3>完全無料の英語インタビュー体験</h3>
+              <p class="activity-desc">忍者衣装で変身し、浅草の外国人観光客に英語でインタビュー。家庭環境に関わらず、すべての子どもに「使える英語」の場を届ける。</p>
+              <ul class="activity-phases">
+                <li><strong>事前 / オンライン英会話</strong>イベント参加日までを目的を持って準備する</li>
+                <li><strong>当日 / 浅草での本番</strong>忍者衣装で外国人観光客に英語インタビュー</li>
+              </ul>
+              <span class="activity-footer">地域・企業の協力により無償提供を実現</span>
+            </div>
           </div>
         </div>
 
-        <div class="fade-in">
-          <p class="eyebrow">What We Do</p>
-          <h2 class="section-heading">忍者Challenge・KIDS<br>イベントについて</h2>
-          <div class="steps">
-
-            <div class="step">
-              <div class="step-num">STEP 1</div>
-              <div class="step-body">
-                <h3>忍者に変身する</h3>
-                <p>子どもたちは本格的な忍者衣装を着て、ロールプレイに備えます。衣装を身にまとうことで「もうひとりの自分」になれます。</p>
+        <!-- Pair 02 -->
+        <div class="pair-row fade-in">
+          <div class="pair-problem">
+            <p class="pair-num">02 — 観光客の側</p>
+            <h3>「見る・食べる」で終わる観光</h3>
+            <p>日本人との本物の交流が生まれていない</p>
+          </div>
+          <div class="pair-arrow" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </div>
+          <div class="pair-activity">
+            <div class="activity-photo">
+              <div class="activity-photo-placeholder" aria-label="写真を追加できます">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                <span>PHOTO</span>
               </div>
             </div>
-
-            <div class="step">
-              <div class="step-num">STEP 2</div>
-              <div class="step-body">
-                <h3>外国人観光客にインタビュー</h3>
-                <p>浅草の観光スポットで外国人観光客に話しかけ、あらかじめ準備した質問で英語インタビューを行います。</p>
-              </div>
+            <div class="activity-body">
+              <p class="activity-num">活動 02</p>
+              <h3>おもてなし・文化を伝える接客体験</h3>
+              <p class="activity-desc">子どもが観光客に日本の文化・作法・言葉を伝える。観光客にとっては「子どもに教わった」という忘れられない体験になる。</p>
+              <span class="activity-footer">企業・店舗・観光施設との連携により実施</span>
             </div>
+          </div>
+        </div>
 
-            <div class="step">
-              <div class="step-num">STEP 3</div>
-              <div class="step-body">
-                <h3>英語で会話を完結させる</h3>
-                <p>質問・返答・お礼まで一連の会話を自力でやりきります。「伝わった」という実体験が子どもの自己効力感を根本から変えます。</p>
-              </div>
+        <!-- Pair 03 (準備中) -->
+        <div class="pair-row fade-in">
+          <div class="pair-problem">
+            <p class="pair-num">03 — 地域・社会の側</p>
+            <h3>オーバーツーリズムを資源に変える</h3>
+            <p>観光客の集中を、子どもの成長に活かす発想が必要</p>
+          </div>
+          <div class="pair-arrow" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </div>
+          <div class="pair-activity pair-activity-soon">
+            <div class="activity-photo">
+              <span class="coming-badge">準備中 / COMING SOON</span>
             </div>
-
+            <div class="activity-body">
+              <p class="activity-num">活動 03</p>
+              <h3>子どもが担う、地域の文化継承</h3>
+              <p class="activity-desc">観光客が集まる場所を「子ども文化ガイドの現場」に変える。地域の伝統・文化を次の世代が学び、外国人に伝える循環をつくる。</p>
+              <span class="activity-footer">自治体・地域団体との連携により展開予定</span>
+            </div>
           </div>
         </div>
 
