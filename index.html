@@ -1142,7 +1142,108 @@
       transform: translateY(-2px);
     }
 
-    /* ── Vision (reworked) ── */
+    /* ── Vision v3 (statement + pillars + themes + footer) ── */
+    .vision-head {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .vision-statement {
+      color: var(--white) !important;
+      font-size: clamp(24px, 3.6vw, 42px);
+      font-weight: 500;
+      margin-bottom: 24px !important;
+      line-height: 1.45;
+      letter-spacing: 0.02em;
+    }
+    .vision-hl {
+      color: var(--accent);
+    }
+    .vision-divider {
+      width: 48px;
+      height: 1px;
+      background: rgba(255,255,255,0.35);
+      margin: 0 auto;
+    }
+    .vision-pillars {
+      max-width: 760px;
+      margin: 0 auto 32px;
+      text-align: center;
+    }
+    .vision-pillars p {
+      font-size: clamp(15px, 1.55vw, 17px);
+      color: rgba(255,255,255,0.82);
+      line-height: 2;
+      margin-bottom: 0;
+    }
+    .vision-pillars p strong {
+      color: var(--white);
+      font-weight: 700;
+    }
+    .vision-sub-statement {
+      text-align: center;
+      font-size: clamp(14px, 1.4vw, 16px);
+      color: rgba(255,255,255,0.62);
+      margin: 0 auto 64px;
+    }
+    .vision-themes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      max-width: 1040px;
+      margin: 0 auto 64px;
+      text-align: left;
+    }
+    .vision-theme {
+      padding: 0 28px;
+      border-left: 1px solid rgba(255,255,255,0.14);
+    }
+    .vision-theme:first-child {
+      border-left: 0;
+      padding-left: 0;
+    }
+    .vision-theme:last-child {
+      padding-right: 0;
+    }
+    .vision-theme-tag {
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 10px;
+      letter-spacing: 0.02em;
+    }
+    .vision-theme h3 {
+      font-family: "Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN", serif;
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+    .vision-theme p {
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.68);
+      line-height: 1.75;
+    }
+    .vision-footer {
+      max-width: 860px;
+      margin: 0 auto;
+      padding-top: 48px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      text-align: center;
+    }
+    .vision-footer p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.9;
+      margin-bottom: 4px;
+    }
+    .vision-footer p:last-child { margin-bottom: 0; }
+    .vision-footer p strong {
+      color: rgba(255,255,255,0.85);
+      font-weight: 700;
+    }
+
+    /* ── Vision (reworked - legacy, kept for safety) ── */
     .vision-new-desc {
       font-size: clamp(15px, 1.5vw, 17px);
       color: rgba(255,255,255,0.85);
@@ -1365,6 +1466,14 @@
       #vision { padding: 60px 0; }
       .vision-roadmap { grid-template-columns: 1fr; gap: 14px; }
       .roadmap-item { padding: 24px 22px; }
+      .vision-head { margin-bottom: 28px; }
+      .vision-pillars { margin-bottom: 24px; }
+      .vision-pillars p { line-height: 1.85; }
+      .vision-sub-statement { margin-bottom: 40px; }
+      .vision-themes { grid-template-columns: 1fr; gap: 28px; margin-bottom: 40px; }
+      .vision-theme { padding: 0 0 0 14px; border-left: 2px solid rgba(255,255,255,0.15); }
+      .vision-theme:first-child { padding-left: 14px; border-left: 2px solid rgba(255,255,255,0.15); }
+      .vision-footer { padding-top: 32px; }
 
       .partner-audiences { grid-template-columns: 1fr; gap: 12px; }
       .btn-apply { padding: 18px 20px; gap: 14px; }
@@ -1737,29 +1846,41 @@
   ======================================== -->
   <section id="vision">
     <div class="container">
-      <div class="fade-in" style="text-align:center; margin-bottom:48px;">
+      <div class="vision-head fade-in">
         <p class="eyebrow">Vision</p>
-        <h2 class="section-heading" style="color: var(--white); margin-bottom: 0;">私たちが目指す世界</h2>
+        <h2 class="section-heading vision-statement">子どもが、<span class="vision-hl">日本と世界をつなぐ人</span>になる。</h2>
+        <div class="vision-divider"></div>
       </div>
-      <p class="vision-new-desc fade-in">
-        忍者Challenge・KIDSが目指すのは、浅草での体験イベントにとどまらない。子どもが挑戦する姿を見た大人が「応援したい」と動き出し、企業・地域・教育機関がつながって、次の挑戦の場をつくっていく循環——そんな「挑戦に格差のない社会」を、浅草から全国へ広げていくことが、私たちのゴールだ。
-      </p>
-      <div class="vision-roadmap fade-in">
-        <div class="roadmap-item">
-          <div class="roadmap-time">Now</div>
-          <div class="roadmap-label">今</div>
-          <p class="roadmap-text">浅草1拠点、累計120組以上、完全無償、26名のボランティア</p>
+
+      <div class="vision-pillars fade-in">
+        <p>文化を「知っている」だけでなく、<strong>「伝えられる」人が育つ社会</strong>。</p>
+        <p>観光は消費ではなく、<strong>人と人が出会う場</strong>になる。</p>
+        <p>子どもが挑戦できる環境に、<strong>お金や家庭環境は関係ない</strong>。</p>
+      </div>
+
+      <p class="vision-sub-statement fade-in">その3つが当たり前になった社会を、私たちは目指しています。</p>
+
+      <div class="vision-themes fade-in">
+        <div class="vision-theme">
+          <p class="vision-theme-tag">教育</p>
+          <h3>挑戦に格差のない社会</h3>
+          <p>すべての子どもが、本物の体験から学べる環境をつくる。</p>
         </div>
-        <div class="roadmap-item">
-          <div class="roadmap-time">Year 3</div>
-          <div class="roadmap-label">3年後</div>
-          <p class="roadmap-text">企業・学校・自治体と連携した多拠点展開 ＋ 法人提供モデルの確立</p>
+        <div class="vision-theme">
+          <p class="vision-theme-tag">観光</p>
+          <h3>交流が生まれる観光地</h3>
+          <p>「見る・食べる」を超えた、人と文化が出会う旅の形をつくる。</p>
         </div>
-        <div class="roadmap-item">
-          <div class="roadmap-time">Future</div>
-          <div class="roadmap-label">最終的に</div>
-          <p class="roadmap-text">訪日外国人との「リアルな英語体験」を社会インフラへ</p>
+        <div class="vision-theme">
+          <p class="vision-theme-tag">文化継承</p>
+          <h3>子どもが伝える伝統文化</h3>
+          <p>次の世代が日本の誇りを語り、世界に届ける循環をつくる。</p>
         </div>
+      </div>
+
+      <div class="vision-footer fade-in">
+        <p>浅草から始めた小さな実験が、<strong>日本の観光と教育の新しいかたち</strong>になる。</p>
+        <p>そのために、地域・企業・自治体と一緒に動いていきたいと思っています。</p>
       </div>
     </div>
   </section>
