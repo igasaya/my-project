@@ -1066,10 +1066,32 @@
       line-height: 1.8;
     }
 
-    /* ── Google Map embed ── */
-    .map-wrap {
+    /* ── Video block inside Impact ── */
+    .impact-video-wrap {
       margin-top: 56px;
       padding-top: 56px;
+      border-top: 1px solid var(--border);
+    }
+    .impact-video-head {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .impact-video-head h3 {
+      font-family: "Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN", serif;
+      font-size: clamp(22px, 2.6vw, 28px);
+      font-weight: 300;
+      color: var(--main);
+      letter-spacing: 0.02em;
+    }
+    .impact-video-wrap .video-facade {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    /* ── Google Map CTA wrapper ── */
+    .map-wrap {
+      margin-top: 40px;
+      padding-top: 40px;
       border-top: 1px solid var(--border);
     }
     .map-head {
@@ -1336,8 +1358,9 @@
       .testimonials-wrap { margin-top: 48px; padding-top: 40px; }
       .testimonials-grid { grid-template-columns: 1fr; }
       .testimonial-card { padding: 22px 22px 24px; }
-      .map-wrap { margin-top: 40px; padding-top: 40px; }
-      .map-embed { aspect-ratio: 4 / 3; }
+      .impact-video-wrap { margin-top: 40px; padding-top: 40px; }
+      .impact-video-head { margin-bottom: 20px; }
+      .map-wrap { margin-top: 28px; padding-top: 28px; }
 
       #vision { padding: 60px 0; }
       .vision-roadmap { grid-template-columns: 1fr; gap: 14px; }
@@ -1593,29 +1616,6 @@
   </section>
 
   <!-- ========================================
-       Section: Video（YouTube 動画）
-  ======================================== -->
-  <section id="video">
-    <div class="container">
-      <div class="video-head fade-in">
-        <p class="eyebrow">Video</p>
-        <h2 class="section-heading" style="margin-bottom:0;">活動の様子を<br>動画で見る</h2>
-      </div>
-      <div class="video-facade fade-in" data-video-id="fI8sB0fv54k" role="button" tabindex="0" aria-label="忍者Challenge・KIDS 活動動画を再生">
-        <img src="https://img.youtube.com/vi/fI8sB0fv54k/maxresdefault.jpg"
-             alt="忍者Challenge・KIDS 活動動画"
-             loading="lazy"
-             onerror="this.onerror=null;this.src='https://img.youtube.com/vi/fI8sB0fv54k/hqdefault.jpg';">
-        <button class="video-play-btn" aria-label="動画を再生">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="white" aria-hidden="true">
-            <path d="M8 5v14l11-7z"/>
-          </svg>
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================
        Section 4: Impact（実績数字）
   ======================================== -->
   <section id="impact">
@@ -1699,20 +1699,25 @@
         </div>
       </div>
 
+      <div class="impact-video-wrap fade-in">
+        <div class="impact-video-head">
+          <p class="eyebrow">Video</p>
+          <h3>活動の様子を動画で見る</h3>
+        </div>
+        <div class="video-facade" data-video-id="fI8sB0fv54k" role="button" tabindex="0" aria-label="忍者Challenge・KIDS 活動動画を再生">
+          <img src="https://img.youtube.com/vi/fI8sB0fv54k/maxresdefault.jpg"
+               alt="忍者Challenge・KIDS 活動動画"
+               loading="lazy"
+               onerror="this.onerror=null;this.src='https://img.youtube.com/vi/fI8sB0fv54k/hqdefault.jpg';">
+          <button class="video-play-btn" aria-label="動画を再生">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
       <div class="map-wrap fade-in">
-        <div class="map-head">
-          <p class="eyebrow">Location &amp; Reviews</p>
-          <h3>Googleマップの口コミ</h3>
-        </div>
-        <div class="map-embed">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.7294312731206!2d139.794734!3d35.7082753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188f5cf5e4e66b%3A0xa96ff2e515117759!2z5b-N6ICFQ2hhbGxlbmdl44O7S0lEUw!5e0!3m2!1sja!2sjp!4v1776774705586!5m2!1sja!2sjp"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            allowfullscreen
-            title="忍者Challenge・KIDS の Googleマップ">
-          </iframe>
-        </div>
         <div class="map-cta-wrap">
           <a href="https://maps.app.goo.gl/RjPVWGZYG7BJm35x5" target="_blank" rel="noopener noreferrer" class="map-cta">
             Googleマップで口コミをすべて見る
