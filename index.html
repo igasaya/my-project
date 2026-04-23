@@ -314,9 +314,54 @@
       line-height: 1.4;
     }
     .problem-card p {
-      font-size: 16px;
+      font-size: 15px;
       color: var(--text);
-      line-height: 1.7;
+      line-height: 1.8;
+    }
+    .problem-card p strong {
+      font-weight: 700;
+      color: var(--main);
+    }
+    .problem-tag {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 4px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      border-radius: 999px;
+    }
+    .problem-tag-edu     { background: #EDE4F9; color: #5B4A8C; }
+    .problem-tag-inbound { background: #DCEDE7; color: #2D6459; }
+    .problem-tag-policy  { background: #FBE4CE; color: #A8561E; }
+
+    .problem-bridge {
+      text-align: center;
+      margin: 56px auto 28px;
+      font-size: 15px;
+      color: var(--sub);
+      max-width: 640px;
+    }
+    .problem-solution {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--main);
+      padding: 28px 32px;
+      max-width: 840px;
+      margin: 0 auto;
+    }
+    .problem-solution-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--main);
+      margin-bottom: 14px;
+      opacity: 0.85;
+    }
+    .problem-solution p {
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.9;
     }
 
     /* ── Section 3: What We Do ── */
@@ -1123,6 +1168,8 @@
 
       #problem { padding: 60px 0; }
       .problem-grid { grid-template-columns: 1fr; gap: 16px; }
+      .problem-bridge { margin: 40px auto 20px; font-size: 14px; }
+      .problem-solution { padding: 22px 22px; }
 
       #video { padding: 60px 0; }
       .video-head { margin-bottom: 32px; }
@@ -1272,45 +1319,37 @@
       <div class="problem-intro fade-in">
         <p class="eyebrow">Problem</p>
         <h2 class="section-heading">なぜ、今この<br>活動が必要か</h2>
-        <p>日本の子どもたちは英語を学んでいます。しかし「使える英語」を体験できる場は、まだほとんど存在しません。</p>
       </div>
       <div class="problem-grid">
 
         <div class="problem-card fade-in">
-          <p class="problem-num">01</p>
-          <div class="problem-icon-wrap">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#264653" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-            </svg>
-          </div>
-          <h3>英語への<br>心理的ハードル</h3>
-          <p>学習機会は増えても、実際に話す自信を持てない子どもが多く、「話せない」という苦手意識が早期に定着してしまいます。</p>
+          <p class="problem-num">01 — 子どもの側</p>
+          <h3>体験・挑戦の格差</h3>
+          <p><strong>英語はお金がないと学べない。</strong>留学、インターナショナルスクール、英会話教室——本物の体験は、家庭環境によって大きく偏っている。「やってみたい」という気持ちに、お金が壁になっている。</p>
+          <span class="problem-tag problem-tag-edu">教育格差</span>
         </div>
 
         <div class="problem-card fade-in">
-          <p class="problem-num">02</p>
-          <div class="problem-icon-wrap">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#264653" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-            </svg>
-          </div>
-          <h3>「使える英語」を<br>体験できる場の少なさ</h3>
-          <p>英語教育が充実しても、本物のコミュニケーションとして英語を「使い切る」場所はほとんど存在しません。</p>
+          <p class="problem-num">02 — 観光客の側</p>
+          <h3>「見る・食べる」で<br>終わる観光</h3>
+          <p>訪日外国人は過去最高水準に達した。しかし多くの旅が<strong>「見る・食べる」で完結</strong>し、日本人との本物の交流は生まれていない。人とつながる旅の価値が、まだ活かされていない。</p>
+          <span class="problem-tag problem-tag-inbound">インバウンド</span>
         </div>
 
         <div class="problem-card fade-in">
-          <p class="problem-num">03</p>
-          <div class="problem-icon-wrap">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#264653" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-            </svg>
-          </div>
-          <h3>外国人との交流機会<br>の偏在</h3>
-          <p>訪日外国人が過去最高水準に達する一方、子どもが彼らと自然に交流できる機会は地域・家庭環境によって大きく異なります。</p>
+          <p class="problem-num">03 — 地域・社会の側</p>
+          <h3>オーバーツーリズムを<br>資源に変える</h3>
+          <p>観光客が集中することは「問題」として語られる。しかし<strong>子どもたちにとっては、世界と出会える環境</strong>が目の前にある。混雑を嘆くだけでなく、この状況を子どもの成長に活かす発想がある。</p>
+          <span class="problem-tag problem-tag-policy">観光政策</span>
         </div>
 
+      </div>
+
+      <p class="problem-bridge fade-in">この3つの課題が、浅草という場所で交差している</p>
+
+      <div class="problem-solution fade-in">
+        <p class="problem-solution-title">忍者キッズが生まれた理由</p>
+        <p>格差なく挑戦できる場をつくり、外国人との本物の交流を生み出す。<br>オーバーツーリズムの「現場」を、子どもの学びの場に変える。<br>この3つを同時に解くのが、忍者Challenge・KIDSです。</p>
       </div>
     </div>
   </section>
