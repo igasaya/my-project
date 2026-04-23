@@ -961,39 +961,40 @@
 
     /* ── Story (founder narrative) ── */
     #story {
-      padding: 120px 0;
+      padding: 80px 0;
       background: var(--white);
     }
     .story-inner {
-      max-width: 760px;
+      max-width: 680px;
       margin: 0 auto;
     }
     .story-head {
       text-align: center;
-      margin-bottom: 56px;
+      margin-bottom: 36px;
     }
     .story-head .section-heading {
       margin-bottom: 0;
+      font-size: clamp(24px, 3vw, 34px);
     }
     .story-body {
-      font-size: clamp(15px, 1.5vw, 17px);
-      line-height: 2;
+      font-size: clamp(14px, 1.3vw, 15.5px);
+      line-height: 1.85;
       color: var(--text);
     }
     .story-body p {
-      margin-bottom: 22px;
+      margin-bottom: 14px;
     }
     .story-body p:last-child { margin-bottom: 0; }
     .story-quote {
       font-family: "Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN", serif;
-      font-size: clamp(17px, 1.8vw, 21px);
+      font-size: clamp(15px, 1.5vw, 18px);
       font-weight: 500;
       color: var(--main);
-      padding: 24px 28px;
+      padding: 16px 22px;
       border-left: 3px solid var(--accent);
       background: var(--cream);
-      margin: 32px 0;
-      line-height: 1.7;
+      margin: 20px 0;
+      line-height: 1.65;
     }
     .story-emphasis {
       font-family: "Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN", serif;
@@ -1002,13 +1003,13 @@
     }
     .story-signature {
       font-family: "Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN", serif;
-      font-size: clamp(16px, 1.7vw, 19px);
+      font-size: clamp(15px, 1.5vw, 17px);
       color: var(--main);
       text-align: center;
-      margin-top: 56px;
-      padding-top: 36px;
+      margin-top: 36px;
+      padding-top: 24px;
       border-top: 1px solid var(--border);
-      line-height: 1.9;
+      line-height: 1.8;
       font-weight: 500;
     }
 
@@ -1304,10 +1305,11 @@
 
       #hero { min-height: auto; padding: 120px 0 80px; }
 
-      #story { padding: 60px 0; }
-      .story-head { margin-bottom: 36px; }
-      .story-quote { padding: 18px 20px; margin: 24px 0; }
-      .story-signature { margin-top: 36px; padding-top: 24px; }
+      #story { padding: 48px 0; }
+      .story-head { margin-bottom: 24px; }
+      .story-body p { margin-bottom: 12px; }
+      .story-quote { padding: 14px 16px; margin: 16px 0; }
+      .story-signature { margin-top: 24px; padding-top: 18px; }
 
       #problem { padding: 60px 0; }
       .problem-grid { grid-template-columns: 1fr; gap: 16px; }
