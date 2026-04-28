@@ -495,9 +495,26 @@
     }
     .pair-row {
       display: grid;
-      grid-template-columns: 1fr 28px 1.55fr;
-      gap: 14px;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
       align-items: stretch;
+    }
+    .pair-row.reverse .pair-photo { order: 2; }
+    .pair-row.reverse .pair-activity { order: 1; }
+    .pair-photo {
+      position: relative;
+      overflow: hidden;
+      background: var(--gray-1);
+      border-radius: 4px;
+      min-height: 280px;
+    }
+    .pair-photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
     .pair-problem {
       background: var(--gray-1);
@@ -1483,8 +1500,11 @@
       .whatwedo-inner { grid-template-columns: 1fr; gap: 48px; }
       .whatwedo-img { max-height: 280px; }
       .whatwedo-img-badge { width: 88px; height: 88px; bottom: -10px; right: -8px; }
-      .pair-row { grid-template-columns: 1fr; gap: 8px; }
+      .pair-row { grid-template-columns: 1fr; gap: 12px; }
+      .pair-row.reverse .pair-photo { order: 1; }
+      .pair-row.reverse .pair-activity { order: 2; }
       .pair-arrow { transform: rotate(90deg); min-height: 24px; }
+      .pair-photo { min-height: 220px; aspect-ratio: 4/3; }
       .pair-problem { padding: 16px 18px; }
       .pair-activity { padding: 18px 18px; }
 
@@ -1650,15 +1670,10 @@
 
       <div class="pairs-wrap">
 
-        <!-- Pair 01 -->
+        <!-- Pair 01: photo (left) → activity (right) -->
         <div class="pair-row fade-in">
-          <div class="pair-problem">
-            <p class="pair-num">01 — 子どもの側</p>
-            <h3>体験・挑戦の格差</h3>
-            <p>お金がないと英語の本物の体験ができない</p>
-          </div>
-          <div class="pair-arrow" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          <div class="pair-photo">
+            <img src="images/activity-01.jpg" alt="忍者衣装で外国人観光客に英語インタビューをする子どもたち" loading="lazy">
           </div>
           <div class="pair-activity">
             <p class="activity-num">活動 01</p>
@@ -1672,15 +1687,10 @@
           </div>
         </div>
 
-        <!-- Pair 02 -->
-        <div class="pair-row fade-in">
-          <div class="pair-problem">
-            <p class="pair-num">02 — 観光客の側</p>
-            <h3>「見る・食べる」で終わる観光</h3>
-            <p>日本人との本物の交流が生まれていない</p>
-          </div>
-          <div class="pair-arrow" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <!-- Pair 02: activity (left) ← photo (right) -->
+        <div class="pair-row reverse fade-in">
+          <div class="pair-photo">
+            <img src="images/activity-02.jpg" alt="観光客に日本文化を英語で伝える忍者衣装の子ども" loading="lazy">
           </div>
           <div class="pair-activity">
             <p class="activity-num">活動 02</p>
@@ -1690,21 +1700,20 @@
           </div>
         </div>
 
-        <!-- Pair 03 (準備中) -->
+        <!-- Pair 03: photo (left) → activity (right) -->
         <div class="pair-row fade-in">
-          <div class="pair-problem">
-            <p class="pair-num">03 — 地域・社会の側</p>
-            <h3>オーバーツーリズムを資源に変える</h3>
-            <p>観光客の集中を、子どもの成長に活かす発想が必要</p>
+          <div class="pair-photo">
+            <img src="images/activity-03.jpg" alt="江戸文化講座で文化の先生から学ぶ忍者衣装の子どもたち" loading="lazy">
           </div>
-          <div class="pair-arrow" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </div>
-          <div class="pair-activity pair-activity-soon">
-            <p class="activity-num">活動 03<span class="activity-coming-badge">準備中</span></p>
-            <h3>子どもが担う、地域の文化継承</h3>
-            <p class="activity-desc">観光客が集まる場所を「子ども文化ガイドの現場」に変える。地域の伝統・文化を次の世代が学び、外国人に伝える循環をつくる。</p>
-            <span class="activity-footer">自治体・地域団体との連携により展開予定</span>
+          <div class="pair-activity">
+            <p class="activity-num">活動 03</p>
+            <h3>江戸文化を学ぶ事前ワークショップ</h3>
+            <p class="activity-desc">浅草で活躍する文化の先生から、江戸の歴史・浮世絵・季節の遊びを学ぶ。「日本人として何を伝えるか」を、本番前に自分の中に育てる時間。</p>
+            <ul class="activity-phases">
+              <li><strong>学ぶ / 室内ワークショップ</strong>先生から江戸の文化・伝統を直接教わる</li>
+              <li><strong>伝える / 浅草での本番</strong>学んだ文化を、外国人観光客に英語で伝える</li>
+            </ul>
+            <span class="activity-footer">文化施設・地域の先生方との連携により実施</span>
           </div>
         </div>
 
